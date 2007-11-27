@@ -18,9 +18,7 @@ java task.ViewClusters -d datafiles/horizontal.126.tab -r outputs/horizontal.txt
 
 And here is the PNG image produced by that:
 
-<center>
-<img src=%ATTACHURL%/test.png>
-</center>
+http://img404.imageshack.us/img404/3633/testmg1.png
 
 Some comments about the overall structure of the image:
 
