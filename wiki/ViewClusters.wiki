@@ -22,7 +22,7 @@ http://img404.imageshack.us/img404/3633/testmg1.png
 
 Some comments about the overall structure of the image:
 
-   * As one can see, the style of this image output is very similar to that of many packages for clustering visualization traditionally used in Bioinformatics. However, the version of Omniclust used by OpenBiomind is not hierarchical, and therefore there is no dendrogram at the side of the big colorful rectangle. Instead, the clusters - all in the same level - are separated by blank lines. 
+   * As one can see, the style of this image output is very similar to that of many packages for clustering visualization traditionally used in Bioinformatics. However, the version of Omniclust used by !OpenBiomind is not hierarchical, and therefore there is no dendrogram at the side of the big colorful rectangle. Instead, the clusters - all in the same level - are separated by blank lines. 
    * Also, clusters are in decreasing order geometric quality (homogeneity x separation), and that explains the high uniformity of rows in the clusters at the top.
    * Finally, for each row there is a text in very tiny characters showing the feature (genes, in the example) and their descriptions, as extracted from the clustering dataset. Columns (samples, in the example) are also identified by their dataset ids, but are written vertically, which may produce a confusing layout if the col names are very similar, as is the case in the example.
 
