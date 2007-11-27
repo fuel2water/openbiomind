@@ -1,8 +1,8 @@
 The !ViewClusters command produces a raster, graphic image showing a given clustering resullt. The command syntax is:
 
-<verbatim>
+{{{
 java task.ViewClusters <-d clustering dataset> <-r clustering result> <-o image file> [-clusteringColors traditional|mono]
-</verbatim>
+}}}
 
 , where:
 
@@ -12,9 +12,9 @@ java task.ViewClusters <-d clustering dataset> <-r clustering result> <-o image 
 
 Here is a usage example of this command:
 
-<verbatim>
+{{{
 java task.ViewClusters -d datafiles/horizontal.126.tab -r outputs/horizontal.txt -o outputs/test.png
-</verbatim>
+}}}
 
 And here is the PNG image produced by that:
 
