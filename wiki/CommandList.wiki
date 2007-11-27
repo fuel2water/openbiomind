@@ -1,3 +1,4 @@
 List of !OpenBiomind commands:
 
 * ViewClusters
+* GraphFeatures
