@@ -25,13 +25,14 @@ public class ConfusionMatrix{
        * @param lines
        */
       public ConfusionMatrix(LineTagger lines){
+             //System.out.println(lines.toString());
     	  
     	     String[] firstLine=lines.get(1).split("\t");
     	     
     	     data[0][0]=Integer.valueOf(firstLine[0]);
     	     data[0][1]=Integer.valueOf(firstLine[1]);
     	  
-    	     String[] secondLine=lines.get(1).split("\t");
+    	     String[] secondLine=lines.get(2).split("\t");
     	     
     	     data[1][0]=Integer.valueOf(secondLine[0]);
     	     data[1][1]=Integer.valueOf(secondLine[1]);
