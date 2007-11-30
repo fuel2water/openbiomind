@@ -1,4 +1,4 @@
-_!CompletePipeline_ performs the "usual" biomind operations on a given dataset (or pair of train and test datasets), encapsulating in a pipeline (hence the name) the inputs and outputs of multiple commands in the way described below. For sake of simplicity, let's consider the case of single dataset (as opposed to a train-test pair):
+!_CompletePipeline_ performs the "usual" biomind operations on a given dataset (or pair of train and test datasets), encapsulating in a pipeline (hence the name) the inputs and outputs of multiple commands in the way described below. For sake of simplicity, let's consider the case of single dataset (as opposed to a train-test pair):
 
    * Enhances dataset.
    * Creates train-test validation folds from dataset.
