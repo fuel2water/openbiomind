@@ -70,4 +70,4 @@ emac:~/Documents/Meus/Vetta/projetos/openbiomind/classes emac$
 
 =Final comments=
 
-Data directories as those dumped by _DatasetTransformer_ are used as input for other commands, for example OpenBiomindMetaTask.
+Data directories as those dumped by _!DatasetTransformer_ are used as input for other commands, for example MetaTask.
