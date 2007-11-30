@@ -9,3 +9,5 @@ List of !OpenBiomind commands:
    * ViewClusters
    * GraphFeatures
    * CompletePipeline
+
+Note: in all commands above, the _openbiomind.jar_ executable, as well as the _pipeline.properites_ file and the _datafiles_ directory present at the extras package, are assumed to be in the classpath. Indeed often openbiomind.jar is evoked explicitly in the command line for sake of emphasis.
