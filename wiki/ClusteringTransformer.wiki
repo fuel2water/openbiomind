@@ -1,4 +1,6 @@
-The clustering transformer runs all existing types of clustering-related data transforms, listed below:
+In !OpenBiomind, clustering operates over clustering datasets that are produced either directly from categorial datasets or from large sets of models (as those produced by metatasks).
+
+The clustering transformer command runs all those clustering-related data transforms, listed below:
 
    * Transforms a categorial dataset into a clustering dataset in a "horizontal" way (i.e., clustering of features, like genes).
    * Transforms a categorial dataset into a clustering dataset in a "vertical" way (i.e., clustering of entities, like patients/samples).
@@ -7,9 +9,9 @@ The clustering transformer runs all existing types of clustering-related data tr
 
 The basic syntax of the clustering transformer is:
 
-<verbatim>
+{{{
 java task.ClusteringTransformer <-d dataset file> <-o output file> <-t transform> [-p metatask results dir]
-</verbatim>
+}}}
 
 The rest of this entry will present examples of each of the utilization cases listed above.
 
