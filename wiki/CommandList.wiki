@@ -1,5 +1,6 @@
 List of !OpenBiomind commands:
 
+   * EnhanceDataset
    * DatasetTransformer
    * MetaTask
    * UtilityComputer
