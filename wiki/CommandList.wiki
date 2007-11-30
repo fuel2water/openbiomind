@@ -1,5 +1,6 @@
 List of !OpenBiomind commands:
 
    * DatasetTransformer
+   * MetaTask
    * ViewClusters
    * GraphFeatures
