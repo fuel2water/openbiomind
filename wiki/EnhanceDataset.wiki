@@ -1,4 +1,4 @@
-This command is in fact a kind of relatively sophisticated dataset transformation, based on ontological data know about genes. For the purposes of OpenBiomind, an ontology is a set of gene categories defined by some aspect of biological relevance. As examples, GO (Gene Ontology) is a set of _functional_ gene categories, while PIR (Protein Information Resource) is a set of gene categories defined by protein types.
+This command is in fact a kind of relatively sophisticated dataset transformation, based on ontological data know about genes. For the purposes of !OpenBiomind, an ontology is a set of gene categories defined by some aspect of biological relevance. As examples, GO (Gene Ontology) is a set of _functional_ gene categories, while PIR (Protein Information Resource) is a set of gene categories defined by protein types.
 
 The syntax of this command is:
 
