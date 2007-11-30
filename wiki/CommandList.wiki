@@ -3,5 +3,6 @@ List of !OpenBiomind commands:
    * DatasetTransformer
    * MetaTask
    * UtilityComputer
+   * ClusteringTransformer
    * ViewClusters
    * GraphFeatures
