@@ -91,4 +91,4 @@ The downloadable extras package in this project currently has two examples of on
    *  _datafiles/go_ contains the description file _go2desc.txt_ for the whole Gene Ontology, while the _gene2go.mouse.txt_ file in the same directory contains all gene symbol-to-GO associations for mice. Currently those are the default ontologyy files assigned in the _pipeline.properties_ system file.
    * _datafiles/pir_ contains the description file  _pir2desc.txt_ for the whole Protein Information Resource ontology. In the same directory, _gene2pir.varm126.txt_ is a small customized association file containing the gene symbol-to-PIR mappings for the dataset _varm126.tab_ alone.
 
-Anyhow, the extremely simple ontology data format outlined above makes it relatively easy for a user to script any other ontological set for use in OpenBiomind. 
+Anyhow, the extremely simple ontology data format outlined above makes it relatively easy for a user to script any other ontological set for use in !OpenBiomind. 
