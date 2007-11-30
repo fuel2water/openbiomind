@@ -5,7 +5,7 @@ import java.util.*;
 import dataset.*;
 import classification.evolution.*;
 import classification.evolution.gp.*;
-import classification.evolution.gp.conventional.ConventionalFitnessEvaluator;
+import classification.evolution.gp.conventional.AccuracyFitnessEvaluator;
 
 public class BoolComplexEvolutionParametersFactory implements EvolutionParametersFactory{
 
@@ -35,7 +35,7 @@ public class BoolComplexEvolutionParametersFactory implements EvolutionParameter
        }
 
        public EvolutionParameters makeParameters(){
-              return new EvolutionParameters(new SimpleAutomataFactory(new MosesLikeOperatorFactory(f2m),0.01f,100),ConventionalFitnessEvaluator.getInstance());
+              return new EvolutionParameters(new SimpleAutomataFactory(new MosesLikeOperatorFactory(f2m),0.01f,100),AccuracyFitnessEvaluator.getInstance());
        }
 
 }
