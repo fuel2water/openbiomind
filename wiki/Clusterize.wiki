@@ -1,0 +1,76 @@
+The _Clusterize_ command operates on clustering data (like that produced by MUTIC and MOBRA transformations), grouping features in that data accordingly to their similarity. Currently, the only clustering algorithm effectively implemented is Omniclust, and therefore there is no parametrization yet for clustering method to be used. The present syntax of this command is:
+
+{{{
+java task.Clusterize <-d clustering dataset> <-o output file> [-b base categorial dataset] [-datasetClusteringMetric similarity metric]
+}}}
+
+_similarity metric_ can assume the values _Euclidean_ and _Cosine_, the only similarity metrics implemented so far. (If this option is not specified, the default value _Euclidean_ defined in _pipeline.properties_ is assumed.) _base categorial dataset_ specifies the original dataset used to generate the clustering dataset, either directly through horizontal or vertical transformations or indirectly through MOBRA. (This is a clumsy requirement for getting feature descriptions, and it will soon be eliminated by a refactoring of the clustering dataset generation by the !ClusteringTransformer command.) And here is an utilization example of the command:
+
+{{{
+openbiomind/classes $ java task.Clusterize -d datafiles/mobra.126.tab -o outputs/mobra.126.txt -b datafiles/varm126.tab -datasetClusteringMetric Cosine
+Clustering element 1 of 37: Rpl19->Pthlh (0.0)
+Clustering element 2 of 37: Pthlh->Cdca7l (1.0)
+Clustering element 3 of 37: Psmd13->Tbp (1.0)
+Clustering element 4 of 37: Ptma->Rpl19 (0.0)
+Clustering element 5 of 37: 1700074P13Rik->1810010M01Rik (0.90369606)
+Clustering element 6 of 37: Tbp->Psmd13 (1.0)
+Clustering element 7 of 37: Cdca7l->Pthlh (1.0)
+Clustering element 8 of 37: Atp6v1b2->1810010M01Rik (0.8333333)
+Clustering element 9 of 37: Nup54->D530037H12Rik (1.0)
+Clustering element 10 of 37: Myd88->Gabarapl2 (1.0)
+Clustering element 11 of 37: Csn1s1->Pthlh (1.0)
+Clustering element 12 of 37: Tcfap2c->Pthlh (1.0)
+Clustering element 13 of 37: Tnfrsf17->Psmd13 (1.0)
+Clustering element 14 of 37: C81600->Snip1 (1.0)
+Clustering element 15 of 37: Rps8->Rpl19 (0.0)
+Clustering element 16 of 37: Gabarapl2->Myd88 (1.0)
+Clustering element 17 of 37: Dusp9->Pthlh (1.0)
+Clustering element 18 of 37: Gabra2->Psmd13 (1.0)
+Clustering element 19 of 37: Slc10a2->Rpl19 (0.0)
+Clustering element 20 of 37: Selp->Pthlh (1.0)
+Clustering element 21 of 37: 1810010M01Rik->1700074P13Rik (0.90369606)
+Clustering element 22 of 37: Mrpl12->1810010M01Rik (0.735147)
+Clustering element 23 of 37: Mapk7->Psmd13 (1.0)
+Clustering element 24 of 37: Echs1->Rpl19 (0.0)
+Clustering element 25 of 37: Sox7->Psmd13 (1.0)
+Clustering element 26 of 37: 5730472N09Rik->Rpl19 (0.0)
+Clustering element 27 of 37: Mkrn1->Rpl19 (0.0)
+Clustering element 28 of 37: Lcor->Psmd13 (1.0)
+Clustering element 29 of 37: H2-Ke6->Psmd13 (1.0)
+Clustering element 30 of 37: D530037H12Rik->Nup54 (1.0)
+Clustering element 31 of 37: Foxg1->Birc5 (1.0)
+Clustering element 32 of 37: Birc5->Foxg1 (1.0)
+Clustering element 33 of 37: Snip1->C81600 (1.0)
+Clustering element 34 of 37: Uqcrh->Rpl19 (0.0)
+Clustering element 35 of 37: Lef1->Pthlh (1.0)
+Clustering element 36 of 37: Mdfic->Rpl19 (0.0)
+Clustering element 37 of 37: Tssk2->Psmd13 (1.0)
+openbiomind/classes $ more outputs/mobra.126.txt 
+Cluster #1
+Quality: 3.4028235E38
+Homogeneity: 1.0
+Separation: 3.4028235E38
+Psmd13  proteasome (prosome, macropain) 26S subunit, non-ATPase, 13
+H2-Ke6  H2-K region expressed gene 6
+Lcor    ligand dependent nuclear receptor corepressor
+Mapk7   mitogen activated protein kinase 7
+Tnfrsf17        tumor necrosis factor receptor superfamily, member 17
+Tssk2   testis-specific serine kinase 2
+Gabra2  gamma-aminobutyric acid (GABA-A) receptor, subunit alpha 2
+Sox7    SRY-box containing gene 7
+Tbp     TATA box binding protein
+
+Cluster #2
+Quality: 3.4028235E38
+Homogeneity: 1.0
+Separation: 3.4028235E38
+C81600  expressed sequence C81600
+Snip1   Smad nuclear interacting protein 1
+
+Cluster #3
+Quality: 3.4028235E38
+Homogeneity: 1.0
+openbiomind/classes $ 
+}}}
+
+As one can see, clustering output is presented in decreasing order of "geometric quality". (The product homogeneity times separation, which are geometric measurements of how compacted is a cluster and how far from neighbors it is.) Also, so far clustering is not hierarchical, for all clustering analysis currently performed as part of the research work at Biomind are concerned only with the first level of clusters. (The one shown in the output above.)
