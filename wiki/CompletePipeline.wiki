@@ -78,7 +78,7 @@ As one can see, most of the property names above are kind of self-explaining. Be
 java task.CompletePipeline <-d dataset> <-o output directory> [-dt test dataset]  [-p property file] [property options]
 }}}
 
-_property options_ are simply options corresponding directly to the properties in the property file. By evoking a property option, one can override the file value of the corresponding property. For instance, if one can 1,000 tasks instead of just 3 (as in the default property file), then the _numberOfTasks_ property can be overriden as in the example
+_property options_ are simply options corresponding directly to the properties in the property file. By evoking a property option, one can override the file value of the corresponding property. For instance, if one wants a realistic number of 1,000 tasks instead of just 3 (as in the default property file), then the _numberOfTasks_ property can be overriden as in the example
 
 {{{
 java task.CompletePipeline -d datafiles/varm126.tab -o outputs/pipelined -numberOfTasks 1000
