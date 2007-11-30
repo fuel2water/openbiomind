@@ -4,6 +4,6 @@ List of !OpenBiomind commands:
    * MetaTask
    * UtilityComputer
    * ClusteringTransformer
-   * Clusterize
+   * [[http://code.google.com/p/openbiomind/wiki/Clusterize][Clusterize]]
    * ViewClusters
    * GraphFeatures
