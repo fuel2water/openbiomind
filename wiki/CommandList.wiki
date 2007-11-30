@@ -8,3 +8,4 @@ List of !OpenBiomind commands:
    * [http://code.google.com/p/openbiomind/wiki/Clusterize Clusterize]
    * ViewClusters
    * GraphFeatures
+   * CompletePipeline
