@@ -7,7 +7,7 @@ import classification.*;
 import classification.evolution.*;
 import dataset.Dataset;
 import snps.*;
-import util.Randomizer;
+import util.*;
 
 /**
  * Inplements a pattern-strength classifier for SNPs.
@@ -17,7 +17,7 @@ import util.Randomizer;
 public class PatternStrengthClassifier extends Evolvable implements Trainer{
     
       private List<String> features;
-      private boolean[] genome;
+      private Set<String> snps=new HashSet<String>();
     
       /**
        * Constructs a random classifier.
@@ -25,13 +25,10 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
        */
       public PatternStrengthClassifier(List<String> features){
              this.features=features;
-             genome=new boolean[features.size()];
-             /*for (int i=0;i<INIT_SIZE;i++){
-                 genome[Randomizer.getInstance().natural(genome.length)]=true;
-             }*/
-             for (int i=0;i<genome.length;i++){
-                 genome[i]=Randomizer.getInstance().logic();
-                 //genome[i]=Randomizer.getInstance().natural(10)==0;
+             for (int i=0;i<features.size();i++){
+                 if (Randomizer.getInstance().logic()){
+                    snps.add(features.get(i));
+                 }
              }
       }
       
@@ -42,22 +39,41 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
        */
       public PatternStrengthClassifier(PatternStrengthClassifier dad,PatternStrengthClassifier mom){
              this.features=dad.getFeatures();
-             this.genome=new boolean[this.features.size()];
              
-             int crossPoint=Randomizer.getInstance().natural(this.genome.length);
+             int crossPoint=Randomizer.getInstance().natural(features.size());
              
-             for (int i=0;i<genome.length;i++){
+             for (int i=0;i<features.size();i++){
                  if (i<crossPoint){
-                    genome[i]=mom.get(i);
+                    if (mom.get(i)){
+                       snps.add(features.get(i));
+                    }
                  }
                  else {
-                      genome[i]=dad.get(i);
+                    if (dad.get(i)){
+                       snps.add(features.get(i));
+                    }
                  }
              }
-             
-             int mutationPoint=Randomizer.getInstance().natural(genome.length);
-             
-             genome[mutationPoint]=!genome[mutationPoint];
+             invert(Randomizer.getInstance().natural(features.size()));
+      }
+      
+      /**
+       * Constructs a classifier from a given textual description.
+       * @param modelBlock
+       */
+      public PatternStrengthClassifier(LineTagger modelBlock){
+             for (int i=0;i<modelBlock.size();i++){
+                 snps.add(modelBlock.get(i));
+             }
+      }
+      
+      private void invert(int index){
+             if (get(index)){
+                snps.remove(features.get(index));
+             }
+             else {
+                  snps.add(features.get(index));
+             }
       }
       
       public Ensemble train(Dataset dataset){
@@ -72,17 +88,17 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
                    float before=acc;
                    int sizeBefore=this.size();
                    
-                   for (int i=0;i<this.genome.length;i++){
+                   for (int i=0;i<this.features.size();i++){
                        
-                       genome[i]=!genome[i];
+                       invert(i);
                        
                        acc=(new ConfusionMatrix(this,dataset.getEntities())).accuracy();
                        if (acc<before){
-                          genome[i]=!genome[i];
+                          invert(i);
                           continue;
                        }
                        if ((acc==before)&&(this.size()>sizeBefore)){
-                          genome[i]=!genome[i];
+                          invert(i);
                           continue;
                        }
                        before=acc;
@@ -102,22 +118,15 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
           
              int sum=0;
           
-             for (int i=0;i<genome.length;i++){
-                 if (!genome[i]){
-                    continue;
-                 }
-                 if (isHomo(sample,features.get(i))){
+             for (String snp:snps){
+                 if (isHomo(sample,snp)){
                     sum++;
-                    //sum+=HOMO_WEIGHT;
                  }
-                 if (isHetero(sample,features.get(i))){
+                 if (isHetero(sample,snp)){
                     sum--;
-                    //sum+=HETERO_WEIGHT;
                  }
              }
              return sum>0;
-             //return sumf>0.0f;
-             //return sum>threshold;
       }
       
       /**
@@ -143,30 +152,14 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
        * Returns the number of SNPs effectively used for classification.
        */
       public int size(){
-          
-             int output=0;
-             
-             for (int i=0;i<genome.length;i++){
-                 if (genome[i]){
-                    output+=1;
-                 }
-             }
-             return output;
+             return snps.size();
       }
       
       /**
        * Returns the set of SNPs effectively used for classification.
        */
       public Set<String> featureSet(){
-          
-              Set<String> output=new HashSet<String>();
-              
-              for (int i=0;i<genome.length;i++){
-                  if (genome[i]){
-                     output.add(features.get(i));
-                  }
-              }
-              return output;
+             return snps;
       }
       
       /**
@@ -182,15 +175,13 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
       public boolean equals(Classifier other){
           
              PatternStrengthClassifier alien=(PatternStrengthClassifier)other;
+             Set<String> alienSNPs=alien.featureSet();
           
-             if (alien.getFeatures().size()!=this.features.size()){
+             if (alienSNPs.size()!=snps.size()){
                 return false;
              }
-             for (int i=0;i<genome.length;i++){
-                 if (genome[i]!=alien.get(i)){
-                    return false;
-                 }
-                 if (!alien.getFeatures().get(i).equals(features.get(i))){
+             for (String snp:snps){
+                 if (!alienSNPs.contains(snp)){
                     return false;
                  }
              }
@@ -198,7 +189,7 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
       }
       
       public boolean get(int index){
-             return genome[index];
+             return snps.contains(features.get(index));
       }
       
       public List<String> getFeatures(){
