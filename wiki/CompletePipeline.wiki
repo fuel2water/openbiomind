@@ -35,7 +35,7 @@ drwxr-xr-x    8 emac  emac     272 Oct  3 19:10 transformedDataset
 openbiomind/classes $ 
 }}}
 
-All the names used above are standardized - that is, !CompletePipeline will *always* produce files and directories named like that for a single dataset as input. (in the case of a train and test datasets supplied as input, and additional file, enhanced_test_dataset.txt, will also be present.) And here is the meaning of each of those files and directories:
+All the names used above are standardized - that is, !CompletePipeline will *always* produce files and directories named like that for a single dataset as input. (in the case of a train and test datasets supplied as input, an additional file, _enhanced_test_dataset.txt_, will also be present.) And here is the meaning of each of those files and directories:
 
    * _enhanced_dataset.txt_: dataset augmented with ontology-related features. (GO and PIR, by default.)
    * _featureUtility.txt_: list of useful features computed from metatask results.
