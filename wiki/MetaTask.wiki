@@ -35,7 +35,7 @@ out0.txt        out1.txt        out2.txt        outfinal.txt
 openbiomind/classes emac$ 
 }}}
 
-This example is toyish in the sense that it uses the default value of 3 tasks; typically "serious" metatasks use from 100 to 1,000 tasks. Anyhow, in this example one can see the obvious name convention that assigns out<i>i</i>.txt as the name of the output file of the <i>i</i>-th task. Each single-task output file contains crude, text-based representations of the ensemble of models generated for each validation fold, along with their confusion matrices, plus the cross-validated confusion matrices in the end. An example:
+This example is toyish in the sense that it uses the default value of 3 tasks; typically "serious" metatasks use from 100 to 1,000 tasks. Anyhow, in this example one can see the obvious name convention that assigns out_i_.txt as the name of the output file of the _i_-th task. Each single-task output file contains crude, text-based representations of the ensemble of models generated for each validation fold, along with their confusion matrices, plus the cross-validated confusion matrices in the end. An example:
 
 {{{
 openbiomind/classes $ more outputs/test/out2.txt 
@@ -156,5 +156,3 @@ Global Test Matrix:
 Accuracy: 0.36842105
 openbiomind/classes $ 
 }}}
-
--- Main.LucioSouza - 07 Mar 2007
