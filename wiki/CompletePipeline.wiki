@@ -8,7 +8,7 @@ _!CompletePipeline performs the "usual" biomind operations on a given dataset (o
    * Runs MUTIC and MOBRA clustering on the metatask output, plus corresponding image generation.
    * Creates graph showing relationships between the top important features.
 
-All results produced by _CompletePipeline_ - including intermediary files and the such - are stored in a rigid tree, using standardized names, under the output directory specified for the pipeline. For example, here is the list of contents of such a directory:
+All results produced by _!CompletePipeline - including intermediary files and the such - are stored in a rigid tree, using standardized names, under the output directory specified for the pipeline. For example, here is the list of contents of such a directory:
 
 {{{
 openbiomind/classes $ ls -la outputs/pipelined/
