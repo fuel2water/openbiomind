@@ -15,9 +15,9 @@ java task.DatasetTransformer <-d dataset> <-o output dir> [-targetCategory categ
 
 As usual, optional parameters that are not supplied receive the default values defined by _pipeline.properties_ .
 
----+ Examples of usage
+=Examples of usage=
 
-----+ Simple folding
+==Simple folding==
 
 {{{
 java task.DatasetTransformer -d datafiles/ageing.tab -o datafiles/ageing5 -targetCategory old -numberOfFolds 5
@@ -34,7 +34,7 @@ openbiomind/classes $
 
 In this example we can also see the use of the -targetCategory defining "old" as the case category for this dataset. (The default value for target categories is "CASE" at _pipeline.properties_ )
 
-----+ Feature selection
+==Feature selection==
 
 {{{
 java task.DatasetTransformer -d datafiles/ageing.tab -o datafiles/ageing3-25 -targetCategory old -numberOfSelectedFeatures 25                         
@@ -55,7 +55,7 @@ openbiomind/classes $ wc datafiles/ageing.tab
 openbiomind/classes $ 
 }}}
 
-----+ Feature selection in a predefined train-test pair
+==Feature selection in a predefined train-test pair==
 
 {{{
 openbiomind/classes $ java task.DatasetTransformer -d datafiles/allamltrain.tab -targetCategory ALL -testDataset datafiles/allamltest.tab -o datafiles/allaml50sam -featureSelectionMethod SAM        27 cases, 11 controls
@@ -68,6 +68,6 @@ emac:~/Documents/Meus/Vetta/projetos/openbiomind/classes emac$ wc datafiles/alla
 emac:~/Documents/Meus/Vetta/projetos/openbiomind/classes emac$ 
 }}}
 
----+ Final comments
+=Final comments=
 
 Data directories as those dumped by _DatasetTransformer_ are used as input for other commands, for example OpenBiomindMetaTask.
