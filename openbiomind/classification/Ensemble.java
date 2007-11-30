@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 import classification.evolution.gp.SimpleAutomaton;
+import classification.evolution.snps.PatternStrengthClassifier;
 import dataset.Entity;
 import util.LineTagger;
 
@@ -23,7 +24,13 @@ public class Ensemble implements Classifier{
        */
       public Ensemble(LineTagger lines){
     	     for (LineTagger modelBlock:lines.fuzzyLineParse("Model")){
-    	    	 data.add(new SimpleAutomaton(modelBlock));
+                 if (SimpleAutomaton.isAutomatonBlock(modelBlock)){
+    	    	    data.add(new SimpleAutomaton(modelBlock));
+                 }
+                 else {
+                      //System.out.println("snps");
+                      data.add(new PatternStrengthClassifier(modelBlock));
+                 }
     	     }
       }
       
