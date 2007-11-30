@@ -92,6 +92,22 @@ public class SimpleAutomaton extends Evolvable{
 	
 	   private List<Node> nodes=new ArrayList<Node>();
 
+       /**
+        * Checks if given block of lines has the structure of the textual description of an automaton.
+        * @param modelBlock
+        * @return
+        */
+       public static boolean isAutomatonBlock(LineTagger modelBlock){
+              //System.out.println(modelBlock.toString());
+              //System.exit(0);
+              for (int i=1;i<modelBlock.size();i++){
+                  if (modelBlock.get(i).contains("input")||modelBlock.get(i).contains("const")){
+                     return true;
+                  }
+              }
+              return false;
+       }
+       
 	   /**
 	    * Computes the level of the operator in this textual representation.
 	    * @param operatorline
