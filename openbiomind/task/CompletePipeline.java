@@ -24,6 +24,23 @@ class CompletePipeline{
              mandatoryOptions.add(OUTPUT_DATASET_OPTION);
              optionalOptions.add(TEST_DATASET_OPTION);
              optionalOptions.add(OTHER_PROPERTY_FILE_OPTION);
+             
+             Properties properties=new Properties();
+             
+             try {
+                   
+                 InputStream inStream=null;
+                     
+                 inStream=ClassLoader.getSystemResourceAsStream(CompletePipeline.PIPELINE_PROPERTIES_FILE);
+                 properties.load(inStream);
+                 inStream.close();
+             }
+             catch (IOException e){
+                   System.err.println("Error loading pipeline properties file.");
+             }
+             for (Object p:properties.keySet()){
+                 optionalOptions.add("-"+((String)p));
+             }
       }
       
       public static void main(String[] args){
@@ -66,6 +83,11 @@ class CompletePipeline{
                 properties.setProperty(PipelineParameters.IS_FOLDED_PROPERTY,"false");
              }
              properties.setProperty(PipelineParameters.OUTPUT_PATH_PROPERTY,PipelineParameters.getOption(args,"-o"));
+             for (Object p:properties.keySet()){
+                 if (options.containsOption("-"+((String)p))){
+                    properties.setProperty((String)p,options.getOption("-"+p));
+                 }
+             }
           
              PipelineParameters pipelineParameters=new PipelineParameters(properties,args);
              
