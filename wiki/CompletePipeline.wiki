@@ -78,20 +78,28 @@ As one can see, most of the property names above are kind of self-explaining. Be
 java task.CompletePipeline <-d dataset> <-o output directory> [-dt test dataset]  [-p property file] [property options]
 }}}
 
+Using the default configurations, a call to complete pipeline will be as simple as, for instance:
+
+{{{
+java -Xmx256m task.CompletePipeline -d datafiles/varm126.tab -o outputs/pipelined
+}}}
+
+(Note: the _-Xmx256m_  is a Java virtual machine parameter setting up heap space. It's use is recommended for the phase of image generation of the CompletePipeline, which usually uses a lot of memory and may crash the JVM without specific settings.)
+
 _property options_ are simply options corresponding directly to the properties in the property file. By evoking a property option, one can override the file value of the corresponding property. For instance, if one wants a realistic number of 1,000 tasks instead of just 3 (as in the default property file), then the _numberOfTasks_ property can be overriden as in the example
 
 {{{
-java task.CompletePipeline -d datafiles/varm126.tab -o outputs/pipelined -numberOfTasks 1000
+java -Xmx256m task.CompletePipeline -d datafiles/varm126.tab -o outputs/pipelined -numberOfTasks 1000
 }}}
 
 Alternatively, if one wants property values different from those of the default property, then a different property file can be specified for the pipeline, as in the example below:
 
 {{{
-java task.CompletePipeline -d datafiles/varm126.tab -o outputs/pipelined -p my_pipeline.properties
+java -Xmx256m task.CompletePipeline -d datafiles/varm126.tab -o outputs/pipelined -p my_pipeline.properties
 }}}
 
 Finally, the special case of train-test pair of datasets is handled by the -dt option, as shown in the following example:
 
 {{{
-java task.CompletePipeline -d datafiles/train.tab -dt datafiles/test.tab -o outputs/pipelined
+java -Xmx256m task.CompletePipeline -d datafiles/train.tab -dt datafiles/test.tab -o outputs/pipelined
 }}}
