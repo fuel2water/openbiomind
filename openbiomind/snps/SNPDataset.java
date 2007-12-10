@@ -82,6 +82,10 @@ public class SNPDataset{
              this.maxFeatures=nFeatures;
       }
       
+      public SNPDataset(){
+          
+      }
+      
       /**
        * Loads dataset and at the same time feature-selects it. The dataset actually stored is expected to have less
        * features (typically orders of magnitude less) than the original dataset.
@@ -126,6 +130,26 @@ public class SNPDataset{
                  features.add(feature);
                  snpMap.put(feature.getID(),feature);
              }
+      }
+
+      /**
+       * Bizarre constructor used during merges of features from many datasets. 
+       * @param samples
+       * @param features
+       */
+      public SNPDataset(List<SNPSample> samples,Collection<SNPFeature> features){
+             this.features=new ArrayList<SNPFeature>(features);
+             for (SNPFeature f:features){
+                 snpMap.put(f.getID(),f);
+             }
+             for (int i=0;i<samples.size();i++){
+                 this.id2Index.put(samples.get(i).getID(),i);
+                 this.samples.add(new SNPSample(this,samples.get(i).getID(),samples.get(i).getCategory(),samples.get(i).getExpected()));
+             }
+      }
+      
+      public List<SNPFeature> getFeatures(){
+             return this.features;
       }
 
       public void shuffle(){
