@@ -83,7 +83,8 @@ public class FoldHolder{
                   String fileName=datafile.getName();
                   
 		    	  //System.out.println("Loading "+fileName);
-		    	  if (!fileName.endsWith(EXTENSION)){
+		    	  if ((!fileName.endsWith(EXTENSION))||((!fileName.contains(TRAIN_PREFIX))&&(!fileName.contains(TEST_PREFIX)))){
+                     //System.out.println(fileName+" not a train-test file");
 		    		 continue;
 		    	  }
 		    	  
