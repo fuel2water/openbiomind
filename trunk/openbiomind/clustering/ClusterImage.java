@@ -448,6 +448,13 @@ public class ClusterImage{
               lines.add("00001");
               lines.add("00011");
               c2pm.put(']',lines);
+              lines=new ArrayList<String>();
+              lines.add("00000");
+              lines.add("11111");
+              lines.add("00000");
+              lines.add("11111");
+              lines.add("00000");
+              c2pm.put('=',lines);
        }
        
        private void scribe(int row,int col,char letter){
