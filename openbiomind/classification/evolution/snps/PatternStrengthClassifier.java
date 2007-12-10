@@ -62,7 +62,12 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
        * @param modelBlock
        */
       public PatternStrengthClassifier(LineTagger modelBlock){
-             for (int i=0;i<modelBlock.size();i++){
+             //System.out.println(modelBlock.toString());
+             //System.exit(0);
+             for (int i=1;i<modelBlock.size();i++){
+                 if (modelBlock.get(i).trim()==""){
+                    continue;
+                 }
                  snps.add(modelBlock.get(i));
              }
       }
