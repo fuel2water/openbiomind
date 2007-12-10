@@ -45,6 +45,7 @@ class FoldSelectSNPs{
                  }
                  
                  List<List<Dataset>> folds=foldelizer.getFolds();
+                 List<Dataset> testList=new ArrayList<Dataset>();
                  
                  for (int i=0;i<folds.size();i++){
                      
@@ -58,7 +59,13 @@ class FoldSelectSNPs{
                      
                      fold.get(1).write(testWriter);
                      testWriter.close();
+                     testList.add(fold.get(1));
                  }
+                 
+                 FileWriter baseWriter=new FileWriter(outdir+"/base_dataset"+FoldHolder.EXTENSION);
+                 
+                 foldelizer.getBaseDataset().write(baseWriter);
+                 baseWriter.close();
              }
              catch (IOException e){
                    System.out.println("Error saving output files at directory "+outdir);

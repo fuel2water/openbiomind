@@ -84,7 +84,7 @@ public class UtilityComputer{
     	     Map<String,Float> s2f=new HashMap<String,Float>(); 
     	     
     	     for (String feature:feature2Count.keySet()){
-    	    	 //System.out.println("Computing feature "+feature);
+    	    	 System.out.println("Computing feature "+feature);
     	    	 d2f.put(feature,dataset.computeDifferentiationFor(feature));
     	    	 s2f.put(feature,dataset.computeSAMFor(feature));
     	    	 f2d.put(feature,dataset.getDescription(feature));

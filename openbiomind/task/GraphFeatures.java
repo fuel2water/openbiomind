@@ -318,6 +318,7 @@ class GraphFeatures{
                      writeNode(m,writer);
                  }
              }
+             writer.write("}\n");
       }
       
       /**
