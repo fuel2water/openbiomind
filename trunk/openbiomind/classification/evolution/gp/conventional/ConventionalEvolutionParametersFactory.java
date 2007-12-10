@@ -24,7 +24,7 @@ public class ConventionalEvolutionParametersFactory implements EvolutionParamete
        }
 
        public EvolutionParameters makeParameters(){
-              return new EvolutionParameters(new SimpleAutomataFactory(new ConventionalOperatorFactory(features),0.01f,100),ConventionalFitnessEvaluator.getInstance());
+              return new EvolutionParameters(new SimpleAutomataFactory(new ConventionalOperatorFactory(features),0.01f,100),AccuracyFitnessEvaluator.getInstance());
        }
 
 }
