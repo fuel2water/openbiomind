@@ -21,6 +21,13 @@ public class SNPSample{
              this.expected=category.equals(targetCategory);
       }
     
+      public SNPSample(SNPDataset dataset,String id,String category,boolean expected){
+             this.dataset=dataset;
+             this.id=id;
+             this.category=category;
+             this.expected=expected;
+      }
+    
       public void setExpected(boolean value){
              this.expected=value;
       }

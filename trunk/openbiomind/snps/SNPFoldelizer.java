@@ -3,7 +3,7 @@ package snps;
 import java.io.*;
 import java.util.*;
 
-import dataset.Dataset;
+import dataset.*;
 import util.Randomizer;
 
 /**
@@ -14,6 +14,7 @@ import util.Randomizer;
 public class SNPFoldelizer{
     
        private List<List<Dataset>> folds=new ArrayList<List<Dataset>>();
+       private Dataset baseDataset;
     
        private static List<String> line2List(String line){
            
@@ -83,9 +84,27 @@ public class SNPFoldelizer{
                      break;
                   }*/
               }
+              
+              Map<String,SNPFeature> i2f=new HashMap<String,SNPFeature>();              
+              
               for (int i=0;i<nFolds;i++){
+                  for (SNPFeature f:snpDatasets.get(i).getFeatures()){
+                      i2f.put(f.getID(),f);
+                  }
                   folds.add(snpDatasets.get(i).numericSplit(foldMasks[i]));
               }
+              
+              SNPDataset baseSNPs=new SNPDataset(snpDatasets.get(0).getSamples(),i2f.values());
+              List<Entity> entities=new ArrayList<Entity>();
+              
+              for (SNPSample s:baseSNPs.getSamples()){
+                  entities.add(s.toEntity());
+              }
+              this.baseDataset=new Dataset(entities);
+       }
+       
+       public Dataset getBaseDataset(){
+              return this.baseDataset;
        }
        
        public List<List<Dataset>> getFolds(){
