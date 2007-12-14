@@ -26,6 +26,8 @@ public class UtilityComputer{
              optionalOptions.add("-"+PipelineParameters.TARGET_CATEGORY_PROPERTY);
       }
       
+      private Map<String,Float> d2f=new HashMap<String,Float>(); 
+      private Map<String,Float> s2f=new HashMap<String,Float>(); 
 	  private int models=0;
 	  private Map<String,Integer> feature2Count=new HashMap<String,Integer>();
 	  private Map<String,Integer> diff2Rank=new HashMap<String,Integer>();
@@ -79,11 +81,7 @@ public class UtilityComputer{
     	     for (ClassificationTaskResult result:metaResult.getTaskResults()){
     	    	 this.accountResult(result);
     	     }
-    	     
-    	     Map<String,Float> d2f=new HashMap<String,Float>(); 
-    	     Map<String,Float> s2f=new HashMap<String,Float>(); 
-    	     
-    	     for (String feature:feature2Count.keySet()){
+    	     for (String feature:dataset.getFeatures()){
     	    	 System.out.println("Computing feature "+feature);
     	    	 d2f.put(feature,dataset.computeDifferentiationFor(feature));
     	    	 s2f.put(feature,dataset.computeSAMFor(feature));
@@ -111,6 +109,34 @@ public class UtilityComputer{
 		     }
 	  }
 	  
+      public int getDiffRankOf(String feature){
+             if (!diff2Rank.containsKey(feature)){
+                return diff2Rank.size();
+             }
+             return this.diff2Rank.get(feature);
+      }
+
+      public int getSAMRank(String feature){
+             if (!this.sam2Rank.containsKey(feature)){
+                return this.sam2Rank.size();
+             }
+             return this.sam2Rank.get(feature);
+      }
+      
+      public float getSAMOf(String feature){
+             if (!s2f.containsKey(feature)){
+                return 0.0f;
+             }
+             return this.s2f.get(feature);              
+      }
+      
+      public float getDifferentiationOf(String feature){
+             if (!d2f.containsKey(feature)){
+                return 0.0f;
+             }
+             return d2f.get(feature);
+      }
+      
       /**
        * Returns the utility of a given feature.
        * @param feature
