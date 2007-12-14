@@ -74,6 +74,8 @@ class PipelineParameters{
         private int topNUseful;
         private int topNCooc;
         private int topNCoex;
+        private String snp2gene;
+        private String snpUtilityDir;
         
         private static void testDir(String path){
             
@@ -230,6 +232,22 @@ class PipelineParameters{
         
         public int getNumberOfFolds(){
                return this.numberOfFolds;
+        }
+        
+        public void setSNPUtilityDir(String value){
+               this.snpUtilityDir=value;
+        }
+        
+        public String getSNPUtilityDir(){
+               return this.snpUtilityDir;
+        }
+        
+        public void setSNP2Gene(String value){
+               this.snp2gene=value;
+        }
+        
+        public String getSNP2Gene(){
+               return this.snp2gene;
         }
         
         public int getNumberOfSelectedFeatures(){
