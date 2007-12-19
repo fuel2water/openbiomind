@@ -16,8 +16,10 @@ import util.*;
  */
 public class PatternStrengthClassifier extends Evolvable implements Trainer{
     
-      private List<String> features;
-      private Set<String> snps=new HashSet<String>();
+       private static int MAX_SIZE=100;
+    
+       private List<String> features;
+       private Set<String> snps=new HashSet<String>();
     
       /**
        * Constructs a random classifier.
@@ -25,10 +27,14 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
        */
       public PatternStrengthClassifier(List<String> features){
              this.features=features;
-             for (int i=0;i<features.size();i++){
-                 if (Randomizer.getInstance().logic()){
-                    snps.add(features.get(i));
-                 }
+             
+             int maxsize=MAX_SIZE;
+             
+             if (features.size()/2<maxsize){
+                maxsize=features.size()/2;
+             }
+             for (int i=0;i<maxsize;i++){
+                 snps.add(features.get(Randomizer.getInstance().natural(features.size())));
              }
       }
       
@@ -40,9 +46,25 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
       public PatternStrengthClassifier(PatternStrengthClassifier dad,PatternStrengthClassifier mom){
              this.features=dad.getFeatures();
              
-             int crossPoint=Randomizer.getInstance().natural(features.size());
+             int maxsize=MAX_SIZE;
              
-             for (int i=0;i<features.size();i++){
+             if (features.size()/2<maxsize){
+                maxsize=features.size()/2;
+             }
+             //int crossPoint=Randomizer.getInstance().natural(features.size());
+             
+             List<String> dadsnps=new ArrayList<String>(dad.featureSet());
+             List<String> momsnps=new ArrayList<String>(mom.featureSet());
+             
+             for (int i=0;i<maxsize;i++){
+                 if (Randomizer.getInstance().logic()){
+                    snps.add(momsnps.get(Randomizer.getInstance().natural(momsnps.size())));
+                 }
+                 else {
+                    snps.add(dadsnps.get(Randomizer.getInstance().natural(dadsnps.size())));
+                 }
+             }
+             /*for (int i=0;i<features.size();i++){
                  if (i<crossPoint){
                     if (mom.get(i)){
                        snps.add(features.get(i));
@@ -53,8 +75,9 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
                        snps.add(features.get(i));
                     }
                  }
-             }
-             invert(Randomizer.getInstance().natural(features.size()));
+             }*/
+             snps.add(features.get(Randomizer.getInstance().natural(features.size())));
+             //invert(Randomizer.getInstance().natural(features.size()));
       }
       
       /**
@@ -81,9 +104,19 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
              }
       }
       
+      private void invert(String snp){
+             if (snps.contains(snp)){
+                snps.remove(snp);
+             }
+             else {
+                  snps.add(snp);
+             }
+      }
+      
       public Ensemble train(Dataset dataset){
           
              boolean improved=true;
+             List<String> flist=new ArrayList<String>(snps);
              
              while (improved){
                    improved=false;
@@ -93,17 +126,17 @@ public class PatternStrengthClassifier extends Evolvable implements Trainer{
                    float before=acc;
                    int sizeBefore=this.size();
                    
-                   for (int i=0;i<this.features.size();i++){
+                   for (int i=0;i<flist.size();i++){
                        
-                       invert(i);
+                       invert(flist.get(i));
                        
                        acc=(new ConfusionMatrix(this,dataset.getEntities())).accuracy();
                        if (acc<before){
-                          invert(i);
+                          invert(flist.get(i));
                           continue;
                        }
                        if ((acc==before)&&(this.size()>sizeBefore)){
-                          invert(i);
+                          invert(flist.get(i));
                           continue;
                        }
                        before=acc;
