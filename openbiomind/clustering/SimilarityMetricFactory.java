@@ -4,6 +4,7 @@ public class SimilarityMetricFactory{
     
        public static final String EUCLIDIAN_NAME="Euclidean";
        public static final String COSINE_NAME="Cosine";
+       public static final String SNP_NAME="SNP";
  
        public static final SimilarityMetricFactory instance=new SimilarityMetricFactory();
        
@@ -20,6 +21,9 @@ public class SimilarityMetricFactory{
               }
               if (metricName.equals(COSINE_NAME)){
                  return new CosineMetric();
+              }
+              if (metricName.equals(SNP_NAME)){
+                 return new SNPMetric();
               }
               return null;
        }
