@@ -42,11 +42,17 @@ class GraphFeatures{
             int uRank,diffRank,samRank;
             
             public FeatureInfo(String line){
+                   //System.out.println(line);
                 
                    String[] cols=line.split("\t");
                    
                    featureName=cols[0];
-                   featureDescription=cols[5];
+                   if (cols.length>=6){
+                      featureDescription=cols[5];
+                   }
+                   else {
+                        featureDescription="";
+                   }
                    featureUtility=Float.valueOf(cols[1]);
                    uRank=Integer.valueOf(cols[2]);
                    diffRank=Integer.valueOf(cols[3]);
@@ -99,6 +105,9 @@ class GraphFeatures{
                    BufferedReader buffer=new BufferedReader(reader);
                    
                    for (String line=buffer.readLine();line!=null;line=buffer.readLine()){
+                       if (line.trim().equals("")){
+                          continue;
+                       }
                        
                        FeatureInfo record=new FeatureInfo(line);
                        
@@ -154,6 +163,7 @@ class GraphFeatures{
             public CoocMap(ClusteringDataset cdata,UtilityTable ut){
                 
                    CosineMetric gauger=new CosineMetric();
+                   //SNPMetric gauger=new SNPMetric();
                 
                    for (ClusterElement e1:cdata.getElements()){
                        if (!ut.f2r.containsKey(e1.getID())){

@@ -37,7 +37,7 @@ public class Clusterize{
              }
              if (!approved){
                  System.out.println("Usage: java task.Clusterize <-d clustering dataset> <-o output file> [-"+
-                                    PipelineParameters.DATASET_CLUSTERING_METRIC_PROPERTY+" similarity metric]");
+                                    PipelineParameters.DATASET_CLUSTERING_METRIC_PROPERTY+" "+SimilarityMetricFactory.COSINE_NAME+"|"+SimilarityMetricFactory.EUCLIDIAN_NAME+"|"+SimilarityMetricFactory.SNP_NAME+"]");
                  System.exit(0);
              }
 
