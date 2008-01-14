@@ -66,6 +66,9 @@ public class Dataset{
                     }
                     
                     String[] cols=line.split("\t");
+                    if (cols.length<2){
+                       continue;
+                    }
                     String feature=cols[0];
                    
                    features.add(feature);
