@@ -27,7 +27,9 @@ class PipelineParameters{
         public static final String MAX_NODES_GRAPH_PROPERTY="topNUseful";
         public static final String MAX_COOC_EDGES_GRAPH_PROPERTY="topNCooc";
         public static final String MAX_COEX_EDGES_GRAPH_PROPERTY="topNCoex";      
-        public static final String CLUSTERING_COLOR_PROPERTY="clusteringColors";      
+        public static final String CLUSTERING_COLOR_PROPERTY="clusteringColors"; 
+        public static final String METATASK_SHUFFLING="metataskShuffling";
+        public static final String SNP_SELECTION_SHUFFLE="snpSelectionShuffle";
 
         private static final String TRANSFORMED_DATASET_SUBDIR="transformedDataset";
         private static final String METATASK_SUBDIR="metatask";
@@ -76,6 +78,8 @@ class PipelineParameters{
         private int topNCoex;
         private String snp2gene;
         private String snpUtilityDir;
+        private boolean shuffleMetatask;
+        private boolean snpSelectionShuffle;
         
         private static void testDir(String path){
             
@@ -171,8 +175,14 @@ class PipelineParameters{
                this.horizontalDatasetPath=this.outputPath+"/"+PipelineParameters.HORIZONTAL_DATASET;
                this.mobraDatasetPath=this.outputPath+"/"+PipelineParameters.MOBRA_DATASET;
                this.graphFilePath=this.outputPath+"/"+PipelineParameters.GRAPH_FILE;
+               this.shuffleMetatask=properties.getProperty(METATASK_SHUFFLING).equals("on");
+               this.snpSelectionShuffle=properties.getProperty(SNP_SELECTION_SHUFFLE).equals("on");
         }
 
+        public boolean getSNPSelectionShuffle(){
+               return this.snpSelectionShuffle;
+        }
+        
         private String[] makeClusteringTransformParameters(String dirFile,String transform,String outfile){
                 if (transform.equals(ClusteringTransformer.MOBRA)||transform.equals(ClusteringTransformer.MUTIC)){
                     String[] output=new String[8];
@@ -268,6 +278,10 @@ class PipelineParameters{
         
         public void setTransformedDatasetPath(String path){
                this.transformedDatasetPath=path;
+        }
+        
+        public boolean metataskShuffling(){
+               return this.shuffleMetatask;
         }
         
         public boolean isFolded(){

@@ -27,6 +27,7 @@ class MetaTask{
              optionalOptions.add("-"+PipelineParameters.TARGET_CATEGORY_PROPERTY);
              optionalOptions.add("-"+PipelineParameters.NUMBER_OF_TASKS_PROPERTY);
              optionalOptions.add("-"+PipelineParameters.CLASSIFICATION_METHOD_PROPERTY);
+             optionalOptions.add("-"+PipelineParameters.METATASK_SHUFFLING);
       }
       
 	  private static final Map<String,TrainerFactory> s2epf=new HashMap<String,TrainerFactory>();
@@ -51,13 +52,15 @@ class MetaTask{
       private String outputPath;
       private List<Ensemble> exf=new ArrayList<Ensemble>();
       private TrainerFactory trainerFab;
+      private boolean shuffling;
       
-      public MetaTask(ArrayList<ArrayList<Dataset>> folds,int numberOfTasks,String outputPath,TrainerFactory trainerFab){
+      public MetaTask(ArrayList<ArrayList<Dataset>> folds,int numberOfTasks,String outputPath,TrainerFactory trainerFab,boolean shuffling){
              completed=false;
              this.numberOfTasks=numberOfTasks;
              this.folds=folds;
              this.outputPath=outputPath;
              this.trainerFab=trainerFab;
+             this.shuffling=shuffling;
       }
 
       /**
@@ -76,6 +79,23 @@ class MetaTask{
             	  List<Dataset> fold=folds.get(i);
             	  
                   Dataset train=fold.get(0);
+                  
+                  List<Boolean> labels=new ArrayList<Boolean>();
+                  
+                  if (this.shuffling){
+                     for (int e=0;e<train.getEntities().size();e++){
+                         labels.add(train.getEntities().get(e).getExpected());
+                     }
+                     for (int e=0;e<train.getEntities().size();e++){
+                         
+                         int j=Randomizer.getInstance().natural(train.getEntities().size());
+                         int k=Randomizer.getInstance().natural(train.getEntities().size());
+                         boolean saver=train.getEntities().get(j).getExpected();
+                         
+                         train.getEntities().get(j).setExpected(train.getEntities().get(k).getExpected());
+                         train.getEntities().get(k).setExpected(saver);
+                     }
+                  }
                   trainerFab.setDataset(train);
       
                   Trainer trainer=trainerFab.makeTrainer();
@@ -95,6 +115,11 @@ class MetaTask{
                   
                   foldTrain.write(outfile);
                   globalTrain.add(foldTrain);
+                  if (this.shuffling){
+                     for (int e=0;e<train.getEntities().size();e++){
+                         train.getEntities().get(e).setExpected(labels.get(e));
+                     }
+                  }
                   outfile.write("Test Matrix: ");
                   outfile.newLine();
                   
@@ -193,6 +218,7 @@ class MetaTask{
              //System.out.println(datasetDir);
              String targetCategory=parameters.getTargetCategory();
              FoldHolder foldHolder=null;
+             boolean shuffling=parameters.metataskShuffling();
              
              try {
                  foldHolder=new FoldHolder(datasetDir,targetCategory);
@@ -203,7 +229,7 @@ class MetaTask{
              String outputDir=parameters.getMetataskOutputPath();
              String gpType=parameters.getClassificationMethod();
              
-             MetaTask runner=new MetaTask(foldHolder.getFolds(),numberOfTasks,outputDir,s2epf.get(gpType));
+             MetaTask runner=new MetaTask(foldHolder.getFolds(),numberOfTasks,outputDir,s2epf.get(gpType),shuffling);
              
              try {
                  runner.execute();
@@ -231,7 +257,8 @@ class MetaTask{
                 System.out.println("Usage: java task.MetaTask <-d dataset directory> <-o outpath> [-"+
                         PipelineParameters.NUMBER_OF_TASKS_PROPERTY+" number of tasks] [-"+
                         PipelineParameters.TARGET_CATEGORY_PROPERTY+" case category] [-"+
-                        PipelineParameters.CLASSIFICATION_METHOD_PROPERTY+" "+methodsToString()+"]");
+                        PipelineParameters.CLASSIFICATION_METHOD_PROPERTY+" "+methodsToString()+"] [-"+
+                        PipelineParameters.METATASK_SHUFFLING+" on|off");
                 return;
              }
 
