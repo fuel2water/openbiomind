@@ -39,4 +39,12 @@ Anyhow, _FoldSelectSNPs_, among other transformations such as folding and select
 The syntax of the FoldSelectSNPs command is:
 
 {{{
+java task.FoldSelectSNPs <-d snp dataset> <-o outpath> [-targetCategory case category] [-numberOfSelectedFeatures number of selected SNPs] [-numberOfFolds number of folds] [-snpSelectionShuffle on|off]
+}}}
+
+As usual, most of the options are pre-defined in the _pipeline.properties_ file. Most of the options above have the same meaning that they do in commands like MetaTask or DatasetTransformer. The _-snpSelectionShuffle_ is trickier and will be discussed later on this page with an example.
+
+First, let's see a basic utilization of _FoldSelectSNPs_:
+
+{{{
 }}}
