@@ -88,10 +88,13 @@ $
 
 Large portions of the command output above, indicated by [...], were ommited for sake of clarity.
 
-As one can see, _FoldSelectSNPs_ received one dataset as input and produced three train-test pairs of datasets in the output dir, for the command used three validation folds as determined in the property file. (There is also a file named _base_dataset.tab_ , which is a "union" of the folds, containing all samples and all features used in them. The purpose of that dataset is beyond this topic and is discussed in context of the SNPUtilityComputer command.
+As one can see, _FoldSelectSNPs_ received one dataset as input and produced three train-test pairs of datasets in the output dir, for the command used three validation folds as determined in the property file. (There is also a file named _base_dataset.tab_ , which is a "union" of the folds, containing all samples and all features used in them. The purpose of that dataset is beyond this topic and is discussed in context of the _SNPUtilityComputer_ command.)
 
 Also, by cheking numbers of lines one can see that, although the input dataset _geneconverted_affy.snp_ contained 1052 SNPs, the output train-test datasets all contain only 50 SNPs. Feature selection when using _FoldSelectSNPs_ is mandatory, and in this case the default number of 50 features was used. Mandatory feature selection was left because often SNP datasets will be very large, with hundreds of thousands of SNPs, and in practice working it is possible to work using only a tiny subset of the total of features.
 
 The selection of the features composing that tiny subset is made by a method exploring a biological bias. There is a well-known tendency in genetics for hereditary conditions to be transmitted by homozigosys of specific alleles. Therefore, when analysing a given feature, the selector assumes that samples will be in the case (or target) category if the feature is homozygotic, control otherwise. The features selected for each fold are then those with highest accuracy according to that classification on the training set.
 
-Now, the numeric
+Now, the numeric conversion. By checking one of the datasets in the output dir, one can see that the data is numeric, following a peculiar convention, as shown below:
+
+{{{
+}}}
