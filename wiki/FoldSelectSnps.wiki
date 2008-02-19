@@ -16,7 +16,7 @@ snp id 2 \t pair 2,1    \t pair 2,2    \t ... \t pair 2,n
 .
 .
 .
-snp id m \t value m,1   \t value m,2   \t ... \t value m,n
+snp id m \t pair m,1    \t pair m,2    \t ... \t pair m,n
 }}}
 
 And the upper-left "corner" of a real !OpenBiomind SNP dataset looks like:
