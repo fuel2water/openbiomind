@@ -9,6 +9,6 @@ List of !OpenBiomind commands:
    * ViewClusters: clustering visualization in classic raster image view.
    * GraphFeatures: portrays relations (of co-expression, co-occurrence in models) among genes (and enhanced features) in a graph visualization, displaying also several other kinds of related information.
    * CompletePipeline: runs all the processes above over a categorial dataset, in a coordinated way, channeling outputs of some commands as inputs of others.
-   * FoldSelectSNPs: converts a SNP dataset into a float-coded version divided in folds and feature-selected - that is, ready for MetaTasks.
+   * [FoldSelectSnps FoldSelectSNPs]: converts a SNP dataset into a float-coded version divided in folds and feature-selected - that is, ready for metatasks.
 
-Note: in all commands above, the _openbiomind.jar_ executable, as well as the _pipeline.properites_ file and the _datafiles_ directory present at the extras package, are assumed to be in the classpath. Indeed often openbiomind.jar is evoked explicitly in the command line for sake of emphasis.
+Note: in all commands above, the _openbiomind-bin_x.xx.jar_ executable (often called simply openbiomind.jar for sake of simplicity and version-independence), as well as the _pipeline.properites_ file and the _datafiles_ directory present at the extras package, are assumed to be in the classpath. Indeed often openbiomind.jar is evoked explicitly in the command line for sake of emphasis.
