@@ -1,0 +1,7 @@
+_FoldSelectSNPs_ is much like a version of DatasetTransformer specifically adapted to deal with SNP datasets.
+
+SNPs, or Single-Nucleotide Polymorphisms, basically represent allelic information focused of the level of individual bases instead of whole genes. A SNP value will be thus typically represented by pairs of symbols representing possible allelic pairings, for instance AA, AB and BB. Therefore, SNP data is _discrete_, in oposition to gene expression data, which is represented by continuous numeric values.
+
+Therefore, the OpenBiomind format for SNP datasets is extremely similar to the gene expression data, with just two differences:
+
+  * Instead of numbers values of feature x sample are pairs of characters. Character '0'  is considered special, meaning a "no call" or "indetermined" SNP.
