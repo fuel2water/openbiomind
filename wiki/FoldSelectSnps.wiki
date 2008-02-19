@@ -5,14 +5,14 @@ SNPs, or Single-Nucleotide Polymorphisms, basically represent allelic informatio
 Therefore, the !OpenBiomind format for SNP datasets is extremely similar to the gene expression data, with just two differences:
 
   * Instead of numbers values of feature x sample are pairs of characters. Character '0'  is considered special, meaning a "no call" or "indetermined" SNP.
-   * There is no description column. While description columns often make sense as a way to describe a gene in an expression dataset, SNPs rarely (if ever) have particular descriptions, and are often analysed relatively to the genes of which they are part.
+  * There is no description column. While description columns often make sense as a way to describe a gene in an expression dataset, SNPs rarely (if ever) have particular descriptions, and are often analysed relatively to the genes of which they are part.
 
 Therefore, the structure of an !OpenBiomind SNP dataset with _n_ samples and _m_ SNPs is:
 
 {{{
          \t sample id 1 \t sample id 2 \t ... \t sample id n
-snp id 1 \t value 1,1   \t value 1,2   \t ... \t value 1,n
-snp id 2 \t value 2,1   \t value 2,2   \t ... \t value 2,n
+snp id 1 \t pair 1,1    \t pair 1,2    \t ... \t pair 1,n
+snp id 2 \t pair 2,1    \t pair 2,2    \t ... \t pair 2,n
 .
 .
 .
