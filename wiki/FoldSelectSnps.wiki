@@ -18,3 +18,16 @@ snp id 2 \t value 2,1   \t value 2,2   \t ... \t value 2,n
 .
 snp id m \t value m,1   \t value m,2   \t ... \t value m,n
 }}}
+
+And the upper-left "corner" of a real OpenBiomind SNP dataset looks like:
+
+{{{
+	             MAYO_10139	MAYO_10198	MAYO_102246	...
+	             1	         2	         2	          ...
+SNP_A-2009808	42	        42	        00          ...
+SNP_A-2260965	31	        31	        11          ...
+SNP_A-4231989	22	        22	        22          ...
+.
+.
+.
+}}}
