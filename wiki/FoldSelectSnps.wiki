@@ -31,3 +31,12 @@ SNP_A-4231989 22         22         22          ...
 .
 .
 }}}
+
+The convention of pairs of characters (numbers in the case above) meaning pairs of bases is found in other formats like PED/MAP and may help the user in the task of scripting an !OpenBiomind base dataset file from other sources.
+
+Anyhow, _FoldSelectSNPs_, among other transformations such as folding and selection, in fact converts the base format described above into a "pseudo-numeric" format exactly equal to the one used for gene expression data, as will be shown ahead. That somehow awkward format transformation is a design option chosen for dealing with historical circumstances: since most of the framework of OpenBiomind was designed for dealing at first with gene expression data, using a pseudo-float representation for SNPs allows the user the possibility of applying many of the pre-existing OpenBiomind features to SNP data.
+
+The syntax of the FoldSelectSNPs command is:
+
+{{{
+}}}
