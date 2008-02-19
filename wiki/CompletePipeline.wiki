@@ -70,6 +70,8 @@ targetCategory = CASE
 featureSelectionMethod = differentiation
 numberOfSelectedFeatures = 50
 clusteringColors = traditional
+metataskShuffling = off
+snpSelectionShuffle = off
 }}}
 
 As one can see, most of the property names above are kind of self-explaining. Besides, they are already explained on the documentation of command-line options for all single commands integrating the pipeline. Perhaps of more interest for !CompletePipeline are four other parameters, two optional and the other two mandatory. A call to !CompletePipeline has the syntax:
