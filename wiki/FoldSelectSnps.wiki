@@ -47,4 +47,49 @@ As usual, most of the options are pre-defined in the _pipeline.properties_ file.
 First, let's see a basic utilization of _FoldSelectSNPs_:
 
 {{{
+$ java -cp .:openbiomind-bin_0.60.jar task.FoldSelectSNPs -d datafiles/geneconverted_affy.snp -o outputs/testsnp/ -targetCategory 2
+Infile: datafiles/geneconverted_affy.snp
+nFolds: 3
+nFeatures: 50
+outdir: outputs/testsnp/
+targetCategory: 2
+shuffle: false
+Adding SNP_A-2009808
+Adding SNP_A-2009808
+Adding SNP_A-2009808
+[...]
+Adding SNP_A-2254065
+Adding SNP_A-2254065
+Adding SNP_A-2254065
+Replacing 0.4644381 by 0.50910383
+Replacing 0.46816644 by 0.52001554
+Replacing 0.45985425 by 0.50100297
+[...]
+Replacing 0.5247328 by 0.53595096
+Replacing 0.5248828 by 0.5373477
+Replacing 0.5255226 by 0.5331529
+$ ls outputs/testsnp/
+base_dataset.tab        test2.tab               train2.tab
+test0.tab               train0.tab
+test1.tab               train1.tab
+$ wc datafiles/geneconverted_affy.snp 
+    1056 1491070 4493870 datafiles/geneconverted_affy.snp
+$ wc outputs/testsnp/*
+     126  177910  826046 outputs/testsnp/base_dataset.tab
+      52   24592  117115 outputs/testsnp/test0.tab
+      52   24540  116572 outputs/testsnp/test1.tab
+      52   24540  116103 outputs/testsnp/test2.tab
+      52   48980  231155 outputs/testsnp/train0.tab
+      52   49032  230777 outputs/testsnp/train1.tab
+      52   49032  230087 outputs/testsnp/train2.tab
+     438  398626 1867855 total
+$ 
 }}}
+
+Large portions of the command output above, indicated by [...], were ommited for sake of clarity.
+
+As one can see, _FoldSelectSNPs_ received one dataset as input and produced three train-test pairs of datasets in the output dir, for the command used three validation folds as determined in the property file.
+
+ Also, by cheking numbers of lines one can see that, although the input dataset _geneconverted_affy.snp_ contained 1052 SNPs, the output train-test datasets all contain only 50 SNPs. Feature selection when using _FoldSelectSNPs_ is mandatory, and in this case the default number of 50 features was used. Mandatory feature selection was left because often SNP datasets will be very large, with hundreds of thousands of SNPs, and in practice working it is possible to work using only a tiny subset of the total of features.
+
+The selection of the features composing that tiny subset is made by a method
