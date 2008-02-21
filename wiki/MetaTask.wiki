@@ -6,7 +6,7 @@ java task.MetaTask <-d dataset directory> <-o outpath> [-numberOfTasks number of
 
 Notes:
 
-   * _-d_ specifies the path of a directory containing train/test dataset pairs, in the way of OpenBiomindDatasetTransformer.
+   * _-d_ specifies the path of a directory containing train/test dataset pairs, in the way of DatasetTransformer.
    * _-o_  specifies a valid directory where single-task and metatask results will be stored.
    * _-numberOfTasks_ specifies the number of single tasks to be run. (Default value 3 from _pipeline.properties_ is assumed if option is ommited.)
    * _-targetCategory_  is the name of the case category in the datasets. (Default value CASE from _pipeline.properties_ is assumed if option is ommited.)
