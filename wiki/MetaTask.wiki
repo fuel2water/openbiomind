@@ -14,7 +14,6 @@ Notes:
      *  _boolsimple_ corresponds to "MOSES-like" GP - boolean operators, median-based input handlers, parsimony-enforcing fitness function, etc. 
      * _boolcomplex_ is GP using the same operators annd input handlers from _boolsimple_, but there is no parsimony pressure built in the fitness function (and therefore models can be more complex, hence the name). 
      * _conventional_ is GP evolving automata using arithmetic operations, under a f-measure-based fitness function. 
-
      * _snpga_ evolves Pattern-Strength Classifiers by using a GA (Genetic Algorithm) approach.
      * _snplocal_ generates Pattern-Strength Classifiers by using local search.
      * _snp_ is GP specifically targeted to SNP data. It uses input handlers able to target the conventional values for discrete SNP pairings (discussed in the page for command _FoldSelectSNPs_). Other than that, _snp_ uses the same setup of _boolcomplex_.
