@@ -1,7 +1,7 @@
 The MetaTask command runs many classification experiments (called _tasks_ in !OpenBiomind lingo) on the same dataset folding. It follows the syntax below:
 
 {{{
-java task.MetaTask <-d dataset directory> <-o outpath> [-numberOfTasks number of tasks] [-targetCategory case category] [-classificationMethod boolsimple|boolcomplex|conventional]
+java task.MetaTask <-d dataset directory> <-o outpath> [-numberOfTasks number of tasks] [-targetCategory case category] [-classificationMethod snpga|boolsimple|snplocal|snp|conventional|boolcomplex] [-metataskShuffling on|off]
 }}}
 
 Notes:
@@ -10,8 +10,14 @@ Notes:
    * _-o_  specifies a valid directory where single-task and metatask results will be stored.
    * _-numberOfTasks_ specifies the number of single tasks to be run. (Default value 3 from _pipeline.properties_ is assumed if option is ommited.)
    * _-targetCategory_  is the name of the case category in the datasets. (Default value CASE from _pipeline.properties_ is assumed if option is ommited.)
-   * -classificationMethod specifies the variant of GP used for categorization. _boolsimple_ is for "MOSES-like" GP - boolean operators, median-based input handlers, parsimony-enforcing fitness function, etc. _boolcomplex_ uses the same operators from _boolsimple_, but there is no parsimony pressure built in the fitness function (and therefore models can be more complex, hence the name). Finally, _conventional_ creates automata using arithmetic operations, under a f-measure-based fitness function. (Default value boolsimple from _pipeline.properties_ is assumed if option is ommited.)
+   * -classificationMethod specifies the technique used for generating a classification model (default value boolcomplex from _pipeline.properties_ is assumed if option is ommited.):
+     *  _boolsimple_ corresponds to "MOSES-like" GP - boolean operators, median-based input handlers, parsimony-enforcing fitness function, etc. 
+     * _boolcomplex_ is GP using the same operators annd input handlers from _boolsimple_, but there is no parsimony pressure built in the fitness function (and therefore models can be more complex, hence the name). 
+     * _conventional_ is GP evolving automata using arithmetic operations, under a f-measure-based fitness function. 
 
+     * _snpga_ evolves Pattern-Strength Classifiers by using a GA (Genetic Algorithm) approach.
+     * _snplocal_ generates Pattern-Strength Classifiers by using local search.
+     * _snp_ is GP specifically targeted to SNP data. It uses input handlers able to target the conventional values for discrete SNP pairings (discussed in the page for command _FoldSelectSNPs_). Other than that, _snp_ uses the same setup of _boolcomplex_.
 ---+ An example of use
 
 {{{
