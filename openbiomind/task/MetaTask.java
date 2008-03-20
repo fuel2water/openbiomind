@@ -258,7 +258,7 @@ class MetaTask{
                         PipelineParameters.NUMBER_OF_TASKS_PROPERTY+" number of tasks] [-"+
                         PipelineParameters.TARGET_CATEGORY_PROPERTY+" case category] [-"+
                         PipelineParameters.CLASSIFICATION_METHOD_PROPERTY+" "+methodsToString()+"] [-"+
-                        PipelineParameters.METATASK_SHUFFLING+" on|off");
+                        PipelineParameters.METATASK_SHUFFLING+" on|off]");
                 return;
              }
 
