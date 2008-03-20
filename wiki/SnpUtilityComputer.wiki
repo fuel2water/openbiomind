@@ -7,4 +7,4 @@ The syntax of this command is:
 java task.SNPUtilityComputer <-r result dir> <-o output dir> <-d base dataset> <-m snp 2 gene file> [-targetCategory target category]
 }}}
 
-As one can see, this command takes as input a _result dir_ containing MetaTask results generated from SNP data, much like UtilityComputer. 
+As one can see, this command takes as input a _result dir_ containing MetaTask results generated from SNP data, much like UtilityComputer. For starts, the _-o_ option specifies an output directory instead of a single file - for SNPUtilityComputer actually generates two output files, one for SNPs and the other for genes. The _-d_ option specifies a base dataset - which is generated when a simbolic SNP file for categorization is converted into a set of numeric folds.
