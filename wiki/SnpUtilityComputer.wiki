@@ -2,3 +2,7 @@ While UtilityComputer accounts the frequency of usage of genes across classifica
 
 
 The syntax of this command is:
+
+{{{
+java task.SNPUtilityComputer <-r result dir> <-o output dir> <-d base dataset> <-m snp 2 gene file> [-targetCategory target category]
+}}}
