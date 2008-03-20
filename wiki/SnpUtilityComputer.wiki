@@ -1,0 +1,4 @@
+While UtilityComputer accounts the frequency of usage of genes across classification models learned from gene expression data, SNPUtilityComputer does the same for models learned from SNP data. One may wonder why a different command is necessary for dealing with SNP features when the basic principle for gauging feature utility (frequency across models) is the same. The answer for that lies in Biology: *genes* associated to important SNPs are also very important (perhaps even *more* important that its individual important SNPs, depending on the focus of the research project at hand). Therefore, SNPUtilityComputer also computes the utility of *genes* in a given MetaTask output generated from SNP data. In the case of a gene _g_, its "SNP utility" is computed as the percent of models containing SNPs belonging to _g_.
+
+
+The syntax of this command is:
