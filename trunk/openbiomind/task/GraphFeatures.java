@@ -300,25 +300,28 @@ class GraphFeatures{
                      }
                  }
 
-                 int ne=Math.min(this.parameters.getTopNCoex(),this.coex.mastermap.get(f1).features.size());
-                 
-                 for (int j=0;j<ne;j++){
-                     for (String f2:this.coex.mastermap.get(f1).features.get(j)){
-                         
-                         String link="";
-                         
-                         if (f1.compareTo(f2)>0){
-                            link=f1+"\" -- \""+f2;
+                 if (this.coex.mastermap.get(f1)!=null){
+
+                     int ne=Math.min(this.parameters.getTopNCoex(),this.coex.mastermap.get(f1).features.size());
+                     
+                     for (int j=0;j<ne;j++){
+                         for (String f2:this.coex.mastermap.get(f1).features.get(j)){
+                             
+                             String link="";
+                             
+                             if (f1.compareTo(f2)>0){
+                                link=f1+"\" -- \""+f2;
+                             }
+                             else {
+                                  link=f2+"\" -- \""+f1;
+                             }
+                             if (xlinked.contains(link)){
+                                continue;
+                             }
+                             mentioned.add(f2);
+                             xlinked.add(link);
+                             writer.write("\""+link+"\" [label=\""+this.coex.mastermap.get(f1).values.get(j)+"\",style=dashed];\n");
                          }
-                         else {
-                              link=f2+"\" -- \""+f1;
-                         }
-                         if (xlinked.contains(link)){
-                            continue;
-                         }
-                         mentioned.add(f2);
-                         xlinked.add(link);
-                         writer.write("\""+link+"\" [label=\""+this.coex.mastermap.get(f1).values.get(j)+"\",style=dashed];\n");
                      }
                  }
                  for (String m:mentioned){
