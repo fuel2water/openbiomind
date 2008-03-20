@@ -6,3 +6,5 @@ The syntax of this command is:
 {{{
 java task.SNPUtilityComputer <-r result dir> <-o output dir> <-d base dataset> <-m snp 2 gene file> [-targetCategory target category]
 }}}
+
+As one can see, this command takes as input a _result dir_ containing MetaTask results generated from SNP data, much like UtilityComputer. 
