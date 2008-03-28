@@ -53,6 +53,21 @@ public class ConfusionMatrix{
       }
 
       /**
+       * Checks if the matrix is "degenerate", that is, refers to a classification were all elements are put in the same
+       * category.
+       * @return
+       */
+      public boolean isDegenerate(){
+             if (data[0][0]+data[1][0]==0){
+                return true;
+             }
+             if (data[0][1]+data[1][1]==0){
+                return true;
+             }
+             return false;
+      }
+      
+      /**
        * "Balanced accuracy", that is, the average of the accuracy among positives and negatives.
        * @return
        */
