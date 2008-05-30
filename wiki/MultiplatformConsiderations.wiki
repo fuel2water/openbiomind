@@ -1,4 +1,4 @@
-When BioMind2 is executed with a given task, it often looks for _pipeline.properties_ in its specified classpath to load the user-specified properties about a BioMind project. However, the user should take note that the syntax for setting the classpath for OpenBioMind varies from one operating system to another. If classpath is not set properly, OpenBioMind will not be able to find _pipeline.properties_ and terminate with the fatal error. 
+When list is executed with a given task, it often looks for _pipeline.properties_ in its specified classpath to load the user-specified properties about a BioMind project. However, the user should take note that the syntax for setting the classpath for OpenBioMind varies from one operating system to another. If classpath is not set properly, OpenBioMind will not be able to find _pipeline.properties_ and terminate with the fatal error. 
 {{{
 Exception in thread "main" java.lang.NullPointerException
         at java.util.Properties$LineReader.readLine(Unknown Source)
