@@ -7,7 +7,7 @@ Exception in thread "main" java.lang.NullPointerException
 }}}
 To troubleshoot this error, attached below is the appropriate syntax to run OpenBioMind jar and include the correct path to _pipeline.properties_. 
 
-= Running OpenBioMind on Linux/Mac OS X =
+= Running OpenBioMind on Linux and Mac OS X =
 
 The syntax for executing the OpenBioMind java jar is
 
