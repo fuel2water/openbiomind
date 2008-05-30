@@ -1,0 +1,24 @@
+When OpenBioMind is executed with a given task, it often looks for _pipeline.properties_ in its specified classpath to load the user-specified properties about a OpenBioMind project. However, the user should take note that the syntax for setting the classpath for OpenBioMind varies from one operating system to another. If classpath is not set properly, OpenBioMind will not be able to find _pipeline.properties_ and terminate with the fatal error. 
+{{{
+Exception in thread "main" java.lang.NullPointerException
+        at java.util.Properties$LineReader.readLine(Unknown Source)
+        at java.util.Properties.load(Unknown Source)
+        at task.EnhanceDataset.main(EnhanceDataset.java:98)
+}}}
+To troubleshoot this error, attached below is the appropriate syntax to run OpenBioMind jar and include the correct path to _pipeline.properties_. 
+
+= Running OpenBioMind on Linux/Mac OS X =
+
+The syntax for executing the OpenBioMind java jar is
+
+{{{
+java -cp .<classpath to _pipeline.properties_>:task.<Task> <args>
+}}}
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
