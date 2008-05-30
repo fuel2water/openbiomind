@@ -12,13 +12,30 @@ To troubleshoot this error, attached below is the appropriate syntax to run Open
 The syntax for executing the OpenBioMind java jar is
 
 {{{
-java -cp .<classpath to _pipeline.properties_>:task.<Task> <args>
+java -cp .<classpath to pipeline.properties>:task.<taskName> <args>
+}}}
+
+Or if, _pipeline.properties_ is located in the current directory you are in, according to the commandline, then you can alternatively execute the jar by: 
+
+{{{
+java -cp .<classpath to pipeline.properties>:task.<taskName> <args>
 }}}
 
 
-= Details =
+= Running OpenBioMind on Windows = 
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+The syntax for executing the OpenBioMind java jar is
+
+{{{
+java -cp .<classpath to pipeline.properties>;task.<taskName> <args>
+}}}
+
+Or if, _pipeline.properties_ is located in the current directory you are in, according to the commandline, then you can alternatively execute the jar by: 
+
+{{{
+java -cp .<classpath to pipeline.properties>;task.<taskName> <args>
+}}}
+
+Notice the difference of a semicolon (_;_) on Windows to set the classpath versus the period(_._) on Linux to do so. 
+
+Also, given the various distributions of Windows and how classpath (considered an environment variable by Windows) is updated either instantaneously or only after a system-restart, you may still get the same fatal error of _pipeline.properties_ not found. In this case, one should go to the Windows Desktop, right-click _My Computer_, select _System Properties_, and then the _Advanced_ tab. From there, one should select _Environment Variables_ and then append to the _CLASSPATH_ string listed under System variables to include either the specific path to your _pipeline.properties_ or append ".;" to instruct Java to always include the current working directory in any jar classpath. You should restart your system for the change in this environment variable to take effect. 
