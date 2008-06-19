@@ -36,11 +36,12 @@ Running recursive feature elimination round 5: 14 features ...
 Round 5 completed; Average GP Performance: 0.9848485
 Running recursive feature elimination round 6: 11 features ...
 Round 6 completed; Average GP Performance: 0.9848485
-(Full terminal output ommited for sake of space)
+(Full terminal output ommited for sake of space ...)
+The best feature set is found in datafiles/varm126-rfe/trial3/13.txt. Its performance was: 1.0. Its feature-set size was: 2
 /openbiomind/classes $
 }}}
 
-_datafiles/varm126-3/_ contains a 3-folding of dataset _varm126.tab_ included in the deploy package. The execution of the RFE above takes about fifteen minutes to complete in a Mac OS X/PowerPC G4 1.25Mhz machine. At the end, all output files are in the specificed output dir:
+_datafiles/varm126-3/_ contains a 3-folding of dataset _varm126.tab_ included in the deploy package. The execution of the RFE above takes about fifteen minutes to complete in a Windowx XP/Celeron 2.25Mhz, 512MB machine. At the end, all output files are in the specificed output dir:
 
 {{{
 openbiomind/classes emac$ ls datafiles/varm126-rfe/
@@ -48,3 +49,5 @@ trial0/        trial1/        trial2/        trial3/
 trial4/        
 openbiomind/classes emac$ 
 }}}
+
+However, we are interested in the best feature-set (the best classification prediction, smallest size) that the RFE came up with. According to the program output, the best feature-set is stored in datafiles/varm126-rfe/trials3/13.txt. 
