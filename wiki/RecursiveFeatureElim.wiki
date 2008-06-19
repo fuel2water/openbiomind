@@ -8,9 +8,14 @@ java task.RecursiveFeatureElim <-f fold directory> <-d base dataset> <-o outpath
 }}}
 
 
-= Introduction =
+Notes:
 
-Add your content here.
+   *_-d_ specifies the original file containing the original dataset and gene-oncology information. 
+   * _-f_ specifies the path of a directory containing train/test dataset pairs, in the way of DatasetTransformer.
+   * _-o_  specifies a valid directory where the RFE trials and their respective metatask output results will be stored.
+   * _-numberOfTasks_ specifies the number of single tasks in a given metatask round to be run. (Default value 3 from _pipeline.properties_ is assumed if option is ommited.)
+   * _-targetCategory_  is the name of the case category in the datasets. (Default value CASE from _pipeline.properties_ is assumed if option is ommited.)
+   * -classificationMethod specifies the technique used for generating a classification model (see !MetaTask for more detailed information on each classification method.)
 
 
 = Details =
