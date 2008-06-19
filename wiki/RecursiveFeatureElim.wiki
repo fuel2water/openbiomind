@@ -22,22 +22,29 @@ Notes:
 ---+ An example of use
 
 {{{
-openbiomind/classes $ java task.MetaTask -d datafiles/transformed/ -o outputs/test                                   
-25 features
-Generation 0, best fitness: 20,000000
-Generation 1, best fitness: 20,000000
-Generation 2, best fitness: 20,000000
-Generation 3, best fitness: 20,000000
-Generation 4, best fitness: 20,500000
-Generation 5, best fitness: 20,500000
+openbiomind/classes $ -d "datafiles/ext.go.pir.varm126.tab" -f "datafiles/varm126-3/" -o "datafiles/varm126-rfe" -numberOfTasks 20 -e 0.85 -n 5                                   
+RFE Trial#0:
+Running recursive feature elimination round 1: 1581 features ...
+Round 1 completed; Average GP Performance: 0.87445885
+Running recursive feature elimination round 2: 42 features ...
+Round 2 completed; Average GP Performance: 0.97727275
+Running recursive feature elimination round 3: 22 features ...
+Round 3 completed; Average GP Performance: 0.97727275
+Running recursive feature elimination round 4: 17 features ...
+Round 4 completed; Average GP Performance: 0.97727275
+Running recursive feature elimination round 5: 14 features ...
+Round 5 completed; Average GP Performance: 0.9848485
+Running recursive feature elimination round 6: 11 features ...
+Round 6 completed; Average GP Performance: 0.9848485
 (Full terminal output ommited for sake of space)
 /openbiomind/classes $
 }}}
 
-_datafiles/transformed/_ contains a 3-folding of dataset _varm126.tab_ included in the deploy package. The execution of the metatask above takes about two minutes to complete in a Mac OS X/PowerPC G4 1.25Mhz machine. At the end, all output files are in the specificed output dir:
+_datafiles/varm126-3/_ contains a 3-folding of dataset _varm126.tab_ included in the deploy package. The execution of the RFE above takes about fifteen minutes to complete in a Mac OS X/PowerPC G4 1.25Mhz machine. At the end, all output files are in the specificed output dir:
 
 {{{
-openbiomind/classes emac$ ls outputs/test/
-out0.txt        out1.txt        out2.txt        outfinal.txt
+openbiomind/classes emac$ ls datafiles/varm126-rfe/
+trial0/        trial1/        trial2/        trial3/
+trial4/        
 openbiomind/classes emac$ 
 }}}
