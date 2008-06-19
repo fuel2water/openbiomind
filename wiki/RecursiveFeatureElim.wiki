@@ -1,0 +1,15 @@
+The RecursiveFeatureElim command allows the user to run many classification experiments (called _MetaTasks_ in !OpenBiomind lingo) on a given dataset folding, in which the reduced feature-set that is derived from every round of MetaTask performed is ''re-transforms'' the data-set folding. Therefore, the process selects recursively for the most utilized gene features in each round of classification, such it may come up with the most important feature-set in the end. 
+
+It follows the syntax below:
+
+= Introduction =
+
+Add your content here.
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
