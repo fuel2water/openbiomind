@@ -2,6 +2,12 @@ The RecursiveFeatureElim command allows the user to run many classification expe
 
 It follows the syntax below:
 
+
+{{{
+java task.RecursiveFeatureElim <-f fold directory> <-d base dataset> <-o outpath> [-numberOfTasks number of tasks] [-targetCategory case category] [-classificationMethod snpga|boolsimple|snplocal|snp|conventional|boolcomplex] [-n number of trials] [-e cut off percentage
+}}}
+
+
 = Introduction =
 
 Add your content here.
