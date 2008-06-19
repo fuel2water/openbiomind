@@ -16,7 +16,8 @@ Notes:
    * _-numberOfTasks_ specifies the number of single tasks in a given metatask round to be run. (Default value 3 from _pipeline.properties_ is assumed if option is ommited.)
    * _-targetCategory_  is the name of the case category in the datasets. (Default value CASE from _pipeline.properties_ is assumed if option is ommited.)
    * _-classificationMethod_ specifies the technique used for generating a classification model (see !MetaTask for more detailed information on each classification method.)
-   *_-numberOfTrials_ specifies the number of RFE trials to be ran. This is different from numberOfTasks as numberOfTasks specify the tasks to be run in a single RFE trial. Users may wish to run multiple RFE trials as to get the best reduced feature-set as RFE process can be quite stochastic. 
+   *_-n_ specifies the number of RFE trials to be ran. This is different from numberOfTasks as numberOfTasks specify the tasks to be run in a single RFE trial. Users may wish to run multiple RFE trials as to get the best reduced feature-set as RFE process can be quite stochastic. 
+   *_-e_ specifies the RFE feature selection cut-off rate, that is after a single metatask round; what percentile of features utilized by the last metatask round will be used for the next round of RFE (i.e., 90% cut-off-rate denotes that 90% of the top utilized genes will be selected for next round).  
 
 
 = Details =
