@@ -59,7 +59,7 @@ GO:0016491	64.17911	2	1	22	oxidoreductase activity; molecular_function
 Rpl19	37.313435	3	1	24	ribosomal protein L19
 }}}
 
-If we want to see the classification models evolved in this RFE round that culminated this feature-set and the resulting performance; we simply go to the classification model path, as printed by the RFE end-summary 
+If we want to see the classification models evolved in this RFE round that culminated this feature-set and the resulting performance; we simply go to the classification model path, in the format $OUTPUT_DIR/$best_trial/$best_round/outfinal.txt.  
 
 {{{
 openbiomind/classes emac$ datafiles/varm126-rfe/trial3/13/outfinal.txt
