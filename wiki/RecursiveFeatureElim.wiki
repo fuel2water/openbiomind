@@ -37,7 +37,7 @@ Round 5 completed; Average GP Performance: 0.9848485
 Running recursive feature elimination round 6: 11 features ...
 Round 6 completed; Average GP Performance: 0.9848485
 (Full terminal output ommited for sake of space ...)
-The best feature set is found in datafiles/varm126-rfe/trial3/13.txt. Its performance was: 1.0. Its feature-set size was: 2
+The best feature set is found in datafiles/varm126-rfe/trial3/13.txt. Its performance was: 1.0. Its feature-set size was: 3.
 /openbiomind/classes $
 }}}
 
@@ -50,4 +50,33 @@ trial4/
 openbiomind/classes emac$ 
 }}}
 
-However, we are interested in the best feature-set (the best classification prediction, smallest size) that the RFE came up with. According to the program output, the best feature-set is stored in datafiles/varm126-rfe/trials3/13.txt. 
+However, we are interested in the best feature-set (the best classification prediction, smallest size) that the RFE came up with. According to the program output, the best feature-set is stored in datafiles/varm126-rfe/trials3/13.txt. To see the list of the genes, one only has to simply open up the feature-set, as pointed by the filepath. 
+
+{{{
+openbiomind/classes emac$ datafiles/varm126-rfe/trial3/13.txt
+Mrpl12	70.149254	1	1	33	mitochondrial ribosomal protein L12
+GO:0016491	64.17911	2	1	22	oxidoreductase activity; molecular_function
+Rpl19	37.313435	3	1	24	ribosomal protein L19
+}}}
+
+If we want to see the classification models evolved in this RFE round that culminated this feature-set and the resulting performance; we simply go to the classification model path, as printed by the RFE end-summary 
+
+{{{
+openbiomind/classes emac$ datafiles/varm126-rfe/trial3/13/outfinal.txt
+Fold 0:
+Ensemble:
+Model #0:
+or
+ inputThreshold GO:0016491 447.6821
+ inputThreshold Rpl22l1 3683.1
+Model #1:
+or
+ inputThreshold GO:0005761 1262.8
+ inputThreshold Rpl22l1 3683.1
+Model #2:
+or
+ inputThreshold Rpl22l1 3683.1
+ inputThreshold GO:0005761 1262.8
+
+(Full terminal output ommited for sake of space ...)
+}}}
