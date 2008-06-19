@@ -9,7 +9,7 @@ java task.RecursiveFeatureElim <-f fold directory> <-d base dataset> <-o outpath
 
 
 Notes:
-
+test
    *_-d_ specifies the original file containing the original dataset and gene-oncology information. 
    * _-f_ specifies the path of a directory containing train/test dataset pairs, in the way of DatasetTransformer.
    * _-o_  specifies a valid directory where the RFE trials and their respective metatask output results will be stored.
