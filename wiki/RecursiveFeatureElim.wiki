@@ -19,10 +19,25 @@ Notes:
    *_-n_ specifies the number of RFE trials to be ran. This is different from numberOfTasks as numberOfTasks specify the tasks to be run in a single RFE trial. Users may wish to run multiple RFE trials as to get the best reduced feature-set as RFE process can be quite stochastic. 
    *_-e_ specifies the RFE feature selection cut-off rate, that is after a single metatask round; what percentile of features utilized by the last metatask round will be used for the next round of RFE (i.e., 90% cut-off-rate denotes that 90% of the top utilized genes will be selected for next round).  
 
+---+ An example of use
 
-= Details =
+{{{
+openbiomind/classes $ java task.MetaTask -d datafiles/transformed/ -o outputs/test                                   
+25 features
+Generation 0, best fitness: 20,000000
+Generation 1, best fitness: 20,000000
+Generation 2, best fitness: 20,000000
+Generation 3, best fitness: 20,000000
+Generation 4, best fitness: 20,500000
+Generation 5, best fitness: 20,500000
+(Full terminal output ommited for sake of space)
+/openbiomind/classes $
+}}}
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+_datafiles/transformed/_ contains a 3-folding of dataset _varm126.tab_ included in the deploy package. The execution of the metatask above takes about two minutes to complete in a Mac OS X/PowerPC G4 1.25Mhz machine. At the end, all output files are in the specificed output dir:
+
+{{{
+openbiomind/classes emac$ ls outputs/test/
+out0.txt        out1.txt        out2.txt        outfinal.txt
+openbiomind/classes emac$ 
+}}}
