@@ -14,7 +14,7 @@ import util.*;
 
 
 
-class MetaTask{
+public class MetaTask{
 
       private static final Set<String> mandatoryOptions=new HashSet<String>();
       private static final Set<String> optionalOptions=new HashSet<String>();
