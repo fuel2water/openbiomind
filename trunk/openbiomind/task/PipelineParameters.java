@@ -50,6 +50,8 @@ class PipelineParameters{
         private static final String VERTICAL_OUTPUT="vertical_output.txt";
         private static final String GRAPH_FILE="graph.dot";
         
+        private int numberOfTrials; 
+        private String RFEOutputPath; 
         private String graphFilePath;
         private String targetCategory;
         private String datasetClusteringMetric;
@@ -80,6 +82,7 @@ class PipelineParameters{
         private String snpUtilityDir;
         private boolean shuffleMetatask;
         private boolean snpSelectionShuffle;
+		private Float RFEEliminationRate;
         
         private static void testDir(String path){
             
@@ -236,6 +239,18 @@ class PipelineParameters{
                 return output;
         }
         
+		public void setRFEEliminationRate(String option) {
+			if (option != null)
+				this.RFEEliminationRate = Float.valueOf(option); 
+		}
+		
+		public float getRFEEliminationRate() {
+			if (RFEEliminationRate != null)
+				return RFEEliminationRate;
+			else
+				return 1; 
+		}
+        
         public String getFeatureSelectionMethod(){
                return this.featureSelectionMethod;
         }
@@ -278,6 +293,14 @@ class PipelineParameters{
         
         public void setTransformedDatasetPath(String path){
                this.transformedDatasetPath=path;
+        }
+        
+        public void setRFEOutputPath(String path) {
+        	this.RFEOutputPath=path; 
+        }
+        
+        public String getRFEOutputPath() {
+        	return this.RFEOutputPath; 
         }
         
         public boolean metataskShuffling(){
@@ -374,6 +397,17 @@ class PipelineParameters{
         
         public int getNumberOfTasks(){
                return this.numberOfTasks;
+        }
+        
+        public void setNumberOfTrials(String numberOfTrials) {
+        	if (numberOfTrials != null)
+        		this.numberOfTrials = Integer.valueOf(numberOfTrials);
+        	else
+        		this.numberOfTrials = 1; 
+        }
+        
+        public int getNumberOfTrials() {
+        	return this.numberOfTrials;
         }
         
         public void setMetataskOutputPath(String value){

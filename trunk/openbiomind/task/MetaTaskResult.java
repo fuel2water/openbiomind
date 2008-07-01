@@ -11,7 +11,7 @@ import util.Distribution;
  * @author Lucio
  *
  */
-class MetaTaskResult{
+public class MetaTaskResult{
 	
 	  ClassificationTaskResult endResult;
 	  List<ClassificationTaskResult> taskResults=new ArrayList<ClassificationTaskResult>(); 
