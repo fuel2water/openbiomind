@@ -140,25 +140,19 @@ class PipelineParameters{
         
         public PipelineParameters(Properties properties,String[] args){
                overrideProperties(args,properties);
-            
                this.datasetPath=properties.getProperty(INPUT_DATASET_PROPERTY);
-                   
                targetCategory=properties.getProperty(TARGET_CATEGORY_PROPERTY);
                classificationMethod=properties.getProperty(CLASSIFICATION_METHOD_PROPERTY);
-               this.ontologyAssociationFile=ClassLoader.getSystemResource(properties.getProperty(ONTOLOGY_ASSOCIATION_FILE_PROPERTY)).getPath();
-               this.ontologyDescriptionFile=ClassLoader.getSystemResource(properties.getProperty(ONTOLOGY_DESCRIPTION_FILE_PROPERTY)).getPath();
-            
+               this.ontologyAssociationFile=properties.getProperty(ONTOLOGY_ASSOCIATION_FILE_PROPERTY);
+               this.ontologyDescriptionFile=properties.getProperty(ONTOLOGY_DESCRIPTION_FILE_PROPERTY);
                isFolded=Boolean.valueOf(properties.getProperty(IS_FOLDED_PROPERTY));
-               
                if (isFolded){
                   this.numberOfFolds=Integer.valueOf(properties.getProperty(NUMBER_OF_FOLDS_PROPERTY));
                }
                else {
                     this.testDatasetPath=properties.getProperty(TEST_DATASET_PROPERTY);
                }
-               
                isFeatureSelected=Boolean.valueOf(properties.getProperty(IS_FEATURE_SELECTED_PROPERTY));
-               
                if (this.isFeatureSelected){
                   featureSelectionMethod=properties.getProperty(FEATURE_SELECTION_METHOD_PROPERTY);
                   this.numberOfSelectedFeatures=Integer.valueOf(properties.getProperty(NUMBER_OF_SELECTED_FEATURES_PROPERTY));
