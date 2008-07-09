@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.*;
 
+import util.Distribution;
+import util.Randomizer;
+
 import classification.ConfusionMatrix;
 
  /**
@@ -19,6 +22,7 @@ public class SNPFeature{
         public static float BB_VALUE=0.75f;
       
         private static char BLANK_CHAR='0';
+        private static String DOUBLE_BLANK="00";
      
         private String id;
         private String[] data;
@@ -73,16 +77,70 @@ public class SNPFeature{
                
                this.id=fields[0];
                this.data=new String[fields.length-1];
-               ConfusionMatrix matrix=new ConfusionMatrix();
+               ConfusionMatrix homo=new ConfusionMatrix();
+               ConfusionMatrix hetero=new ConfusionMatrix();
                
                for (int i=0;i<samples.size();i++){
                    data[i]=fields[i+1];
                    if (!chosen[i]){
                       continue;
                    }
-                   matrix.account(samples.get(i).getExpected(),this.isHomo(i));
+                   homo.account(samples.get(i).getExpected(),this.isHomo(i));
+                   hetero.account(samples.get(i).getExpected(),this.isHetero(i));
                }
-               this.differentiation=matrix.balancedAccuracy();
+               //this.differentiation=Math.max(homo.balancedAccuracy(),hetero.balancedAccuracy());
+               this.differentiation=this.samDiff(samples,chosen,homo.accuracy());
+        }
+        
+        private float samDiff(List<SNPSample> samples,boolean[] chosen,float baseAccuracy){
+            
+                int pos=0,count=0;
+                List<Boolean> labels=new ArrayList<Boolean>();
+            
+                for (int i=0;i<samples.size();i++){
+                    if (!chosen[i]){
+                       continue;
+                    }
+                    if (samples.get(i).getExpected())
+                       pos+=1;
+                    count+=1;
+                    labels.add(samples.get(i).getExpected());
+                }
+                
+                Distribution dist=new Distribution();
+                float bottomacc=Math.max(pos,count-pos)*1.0f/count;
+                
+                if (baseAccuracy<=bottomacc)
+                   return 0.0f;
+                for (int t=0;t<10;t++){
+                
+                    ConfusionMatrix matrix=new ConfusionMatrix();
+                    
+                    for (int i=0;i<labels.size();i++){
+                        
+                        int j=Randomizer.getInstance().natural(labels.size());
+                        int k=Randomizer.getInstance().natural(labels.size());
+                        boolean saver=labels.get(j);
+                        
+                        labels.set(j,labels.get(k));
+                        labels.set(k,saver);
+                    }
+                    
+                    int index=0;
+                    
+                    for (int i=0;i<samples.size();i++){
+                        if (!chosen[i]){
+                           continue;
+                        }
+                        matrix.account(labels.get(index),this.isHomo(i));
+                        index+=1;
+                    }
+                    dist.account(matrix.accuracy()-bottomacc);
+                }
+                
+                if (baseAccuracy<dist.average()+dist.standardDeviation())
+                   return 0.0f;
+                return baseAccuracy;
         }
         
         /**
@@ -100,29 +158,20 @@ public class SNPFeature{
                       cSet.add(c);
                   }
 
-                  //System.out.println(cSet.size());
-                  //System.out.println(this.id);
-                  List<String> sorter=new ArrayList<String>(cSet);
-                  
-                  Collections.sort(sorter);
-                  
-                  for (int i=0;i<sorter.size();i++){
-                      if ((sorter.get(i).charAt(0)==BLANK_CHAR)||(sorter.get(i).charAt(1)==BLANK_CHAR)){
-                         nMap.put(sorter.get(i),BLANK_VALUE);
+                  nMap.put(DOUBLE_BLANK,BLANK_VALUE);
+                  for (String c:cSet){
+                      if (c.equals(DOUBLE_BLANK)){
                          continue;
                       }
-                      if (sorter.get(i).charAt(0)!=sorter.get(i).charAt(1)){
-                         nMap.put(sorter.get(i),AB_VALUE);
+                      if (c.charAt(0)!=c.charAt(1)){
+                         nMap.put(c,AB_VALUE);
                          continue;
                       }
                       if (nMap.containsValue(AA_VALUE)){
-                         nMap.put(sorter.get(i),BB_VALUE);
+                         nMap.put(c,BB_VALUE);
                       }
                       else {
-                           nMap.put(sorter.get(i),AA_VALUE);
-                      }
-                      if (nMap.size()==4){
-                         break;
+                           nMap.put(c,AA_VALUE);
                       }
                   }
                }
