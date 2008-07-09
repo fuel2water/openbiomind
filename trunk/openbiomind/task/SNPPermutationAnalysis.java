@@ -26,7 +26,7 @@ class SNPPermutationAnalysis{
              try {
                  
                  MetaTaskResult baseResult=new MetaTaskResult(baseDir);
-                 MetaTaskResult shuffleResult=new MetaTaskResult();
+                 MetaTaskResult shuffleResult=new MetaTaskResult(shuffledDir);
                   
                  File dirProbe=new File(shuffledDir);
                   
