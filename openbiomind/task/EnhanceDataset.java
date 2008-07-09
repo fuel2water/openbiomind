@@ -31,9 +31,23 @@ class EnhanceDataset{
              try {
                  
                  String oboFileName=parameters.getOntologyDescriptionFile();
-                 FileReader descriptionReader=new FileReader(oboFileName);
+                 InputStream descriptionStream=ClassLoader.getSystemResourceAsStream(oboFileName);
+                 
+                 if (descriptionStream==null){
+                    descriptionStream=new FileInputStream(oboFileName);
+                 }
+                 
+                 InputStreamReader descriptionReader=new InputStreamReader(descriptionStream);
+                 //FileReader descriptionReader=new FileReader(oboFileName);
                  String associationFileName=parameters.getOntologyAssociationFile();
-                 FileReader associationReader=new FileReader(associationFileName);
+                 
+                 InputStream associationStream=ClassLoader.getSystemResourceAsStream(associationFileName);
+                 
+                 if (associationStream==null){
+                     associationStream=new FileInputStream(associationFileName);
+                 }
+                 InputStreamReader associationReader=new InputStreamReader(associationStream);
+                 //FileReader associationReader=new FileReader(associationFileName);
                  
                  ontologyStorer=new OntologyStorer(descriptionReader,associationReader);
                  descriptionReader.close();
