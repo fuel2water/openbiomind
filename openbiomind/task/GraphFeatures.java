@@ -364,11 +364,11 @@ class GraphFeatures{
              String errors=options.makeErrorMessages();
              
              if (!errors.equals("")){
-                System.out.println(errors);
+                System.err.println(errors);
                 approved=false;
              }
              if (!approved){
-                System.out.println("Usage: java task.GraphFeatures <-h horizontal dataset> <-m mobra dataset> <-u utility file> <-o output file> [-"+
+                System.err.println("Usage: java task.GraphFeatures <-h horizontal dataset> <-m mobra dataset> <-u utility file> <-o output file> [-"+
                                    PipelineParameters.MAX_NODES_GRAPH_PROPERTY+" max nodes] [-"+
                                    PipelineParameters.MAX_COOC_EDGES_GRAPH_PROPERTY+" max co-occurence edges] [-"+
                                    PipelineParameters.MAX_COEX_EDGES_GRAPH_PROPERTY+" max co-expression edges]");

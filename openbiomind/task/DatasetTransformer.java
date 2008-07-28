@@ -138,7 +138,7 @@ class DatasetTransformer{
              }
              else {
                   if (!tester.isDirectory()){
-                     System.out.println("There is already a file called "+outdir);
+                     System.err.println("There is already a file called "+outdir);
                      return;
                   }
              }
@@ -162,15 +162,15 @@ class DatasetTransformer{
              String errors=options.makeErrorMessages();
              
              if (!errors.equals("")){
-                System.out.println(errors);
+                System.err.println(errors);
                 approved=false;
              }
              if (options.containsOption("-"+PipelineParameters.NUMBER_OF_FOLDS_PROPERTY)&&options.containsOption("-"+PipelineParameters.TEST_DATASET_PROPERTY)){
-                System.out.println("Mutually exclusive options -"+PipelineParameters.NUMBER_OF_FOLDS_PROPERTY+" and -"+PipelineParameters.TEST_DATASET_PROPERTY+" used");
+                System.err.println("Mutually exclusive options -"+PipelineParameters.NUMBER_OF_FOLDS_PROPERTY+" and -"+PipelineParameters.TEST_DATASET_PROPERTY+" used");
                 approved=false;
              }
              if (!approved){
-                System.out.println("Usage: java task.DatasetTransformer <-d dataset> <-o output dir> [-"+
+                System.err.println("Usage: java task.DatasetTransformer <-d dataset> <-o output dir> [-"+
                                    PipelineParameters.TARGET_CATEGORY_PROPERTY+" category] [-"+
                                    PipelineParameters.NUMBER_OF_FOLDS_PROPERTY+" folds|-"+
                                    PipelineParameters.TEST_DATASET_PROPERTY+" test dataset] [-"+
