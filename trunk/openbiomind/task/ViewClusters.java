@@ -31,11 +31,11 @@ class ViewClusters{
              String errors=options.makeErrorMessages();
              
              if (!errors.equals("")){
-                System.out.println(errors);
+                System.err.println(errors);
                 approved=false;
              }
              if (!approved){
-                System.out.println("Usage: java task.ViewClusters <-d clustering dataset> <-r clustering result> <-o image file> ["+CLUSTERING_COLOR_OPTION+" traditional|mono]");
+                System.err.println("Usage: java task.ViewClusters <-d clustering dataset> <-r clustering result> <-o image file> ["+CLUSTERING_COLOR_OPTION+" traditional|mono]");
                 return;
              }
 

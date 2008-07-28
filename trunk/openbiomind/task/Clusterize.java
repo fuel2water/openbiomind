@@ -32,11 +32,11 @@ public class Clusterize{
              String errors=options.makeErrorMessages();
              
              if (!errors.equals("")){
-                System.out.println(errors);
+                System.err.println(errors);
                 approved=false;
              }
              if (!approved){
-                 System.out.println("Usage: java task.Clusterize <-d clustering dataset> <-o output file> [-"+
+                 System.err.println("Usage: java task.Clusterize <-d clustering dataset> <-o output file> [-"+
                                     PipelineParameters.DATASET_CLUSTERING_METRIC_PROPERTY+" "+SimilarityMetricFactory.COSINE_NAME+"|"+SimilarityMetricFactory.EUCLIDIAN_NAME+"|"+SimilarityMetricFactory.SNP_NAME+"]");
                  System.exit(0);
              }
@@ -69,7 +69,7 @@ public class Clusterize{
                  reader.close();
              }
              catch (Exception e){
-                   System.out.println("Unable to load clustering data.");
+                   System.err.println("Unable to load clustering data.");
                    e.printStackTrace();
              }
               
@@ -81,7 +81,7 @@ public class Clusterize{
                  writer.close();
              }
              catch (IOException e){
-                   System.out.println("Unable to save clustering results.");
+                   System.err.println("Unable to save clustering results.");
              }
        }
 }

@@ -212,7 +212,7 @@ public class RecursiveFeatureElim {
 			}
 			
 		} catch (IOException e) {
-			System.out.println("There was an error either writing to file/folder during the RFE trial(s).");
+			System.err.println("There was an error either writing to file/folder during the RFE trial(s).");
 			e.printStackTrace(); 
 		}
 		
@@ -237,11 +237,11 @@ public class RecursiveFeatureElim {
 		String errors = options.makeErrorMessages();
 		
 		if (!errors.equals("")){
-			System.out.println(errors);
+			System.err.println(errors);
 			approved=false; 
 		}
 		if (!approved) {
-			System.out.println("Usage: java task.RecursiveFeatureElim <-f fold directory> <-d base dataset> <-o outpath> [-" +
+			System.err.println("Usage: java task.RecursiveFeatureElim <-f fold directory> <-d base dataset> <-o outpath> [-" +
 								PipelineParameters.NUMBER_OF_TASKS_PROPERTY+" number of tasks] [-"+
 								PipelineParameters.TARGET_CATEGORY_PROPERTY+" case category] [-"+
 								PipelineParameters.CLASSIFICATION_METHOD_PROPERTY+" "+MetaTask.methodsToString()+ "] [" +

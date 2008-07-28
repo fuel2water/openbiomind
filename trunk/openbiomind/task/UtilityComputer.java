@@ -233,11 +233,11 @@ public class UtilityComputer{
              String errors=options.makeErrorMessages();
              
              if (!errors.equals("")){
-                System.out.println(errors);
+                System.err.println(errors);
                 approved=false;
              }
              if (!approved){
-                System.out.println("Usage: java task.UtilityComputer <-r result dir> <-o output file> <-d base dataset> [-"+
+                System.err.println("Usage: java task.UtilityComputer <-r result dir> <-o output file> <-d base dataset> [-"+
                         PipelineParameters.TARGET_CATEGORY_PROPERTY+" target category]");
 		    	return;
 		     }

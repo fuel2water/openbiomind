@@ -41,19 +41,19 @@ class ClusteringTransformer{
              String errors=options.makeErrorMessages();
              
              if (!errors.equals("")){
-                System.out.println(errors);
+                System.err.println(errors);
                 approved=false;
              }
              if (approved){
                 if (!options.containsOption(METATASK_RESULTS_PATH_OPTION)){
                    if (options.getOption(TRANSFORM_OPTION).equals(MOBRA)||options.getOption(TRANSFORM_OPTION).equals(MUTIC)){
-                      System.out.println("MOBRA and MUTIC options are not applicable to categorial datasets. Please inform a metatask output dir using option "+METATASK_RESULTS_PATH_OPTION);
+                      System.err.println("MOBRA and MUTIC options are not applicable to categorial datasets. Please inform a metatask output dir using option "+METATASK_RESULTS_PATH_OPTION);
                       approved=false;
                    }
                 }
              }
              if (!approved){
-                System.out.println("Usage: java task.ClusteringTransformer <-d dataset file> <-o output file> <-t transform> [-p metatask results dir]");
+                System.err.println("Usage: java task.ClusteringTransformer <-d dataset file> <-o output file> <-t transform> [-p metatask results dir]");
                 System.exit(0);
              }
              
@@ -92,7 +92,7 @@ class ClusteringTransformer{
                 clusteringDataset=new ClusteringDataset(dataset,result.getTaskResults(),transformName.equals(MOBRA)?ClusteringDataset.ResultTransform.MOBRA:ClusteringDataset.ResultTransform.MUTIC);
              }
              if (clusteringDataset==null){
-                System.out.println("It seems that you are requesting an invalid transform. Valid transforms are "+DATASET_HORIZONTAL+","+DATASET_VERTICAL+","+MOBRA+" and "+MUTIC);
+                System.err.println("It seems that you are requesting an invalid transform. Valid transforms are "+DATASET_HORIZONTAL+","+DATASET_VERTICAL+","+MOBRA+" and "+MUTIC);
                 return;
              }
              

@@ -96,11 +96,11 @@ class EnhanceDataset{
              String errors=options.makeErrorMessages();
              
              if (!errors.equals("")){
-                System.out.println(errors);
+                System.err.println(errors);
                 approved=false;
              }
              if (!approved){
-                System.out.println("Usage: java task.EnhanceDataset <"+INPUT_DATASET_OPTION+" original dataset> <"+OUTPUT_DATASET_OPTION+" enhanced dataset> [-"+PipelineParameters.ONTOLOGY_DESCRIPTION_FILE_PROPERTY+" ontology description file] [-"+PipelineParameters.ONTOLOGY_ASSOCIATION_FILE_PROPERTY+" ontology association file]");
+                System.err.println("Usage: java task.EnhanceDataset <"+INPUT_DATASET_OPTION+" original dataset> <"+OUTPUT_DATASET_OPTION+" enhanced dataset> [-"+PipelineParameters.ONTOLOGY_DESCRIPTION_FILE_PROPERTY+" ontology description file] [-"+PipelineParameters.ONTOLOGY_ASSOCIATION_FILE_PROPERTY+" ontology association file]");
                 System.exit(0);
              }
              

@@ -250,11 +250,11 @@ public class MetaTask{
              String errors=options.makeErrorMessages();
              
              if (!errors.equals("")){
-                System.out.println(errors);
+                System.err.println(errors);
                 approved=false;
              }
              if (!approved){
-                System.out.println("Usage: java task.MetaTask <-d dataset directory> <-o outpath> [-"+
+                System.err.println("Usage: java task.MetaTask <-d dataset directory> <-o outpath> [-"+
                         PipelineParameters.NUMBER_OF_TASKS_PROPERTY+" number of tasks] [-"+
                         PipelineParameters.TARGET_CATEGORY_PROPERTY+" case category] [-"+
                         PipelineParameters.CLASSIFICATION_METHOD_PROPERTY+" "+methodsToString()+"] [-"+
