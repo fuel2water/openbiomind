@@ -65,7 +65,7 @@ class CompletePipeline{
                  InputStream inStream=null;
                      
                  if (options.containsOption(OTHER_PROPERTY_FILE_OPTION)){
-                    inStream=ClassLoader.getSystemResourceAsStream(OTHER_PROPERTY_FILE_OPTION);
+                    inStream=ClassLoader.getSystemResourceAsStream(options.getOption(OTHER_PROPERTY_FILE_OPTION));
                  }
                  else {
                       inStream=ClassLoader.getSystemResourceAsStream(CompletePipeline.PIPELINE_PROPERTIES_FILE);
