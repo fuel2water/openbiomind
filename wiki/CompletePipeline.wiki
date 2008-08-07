@@ -64,14 +64,13 @@ isFolded = true
 numberOfFolds = 3
 isFeatureSelected = false
 numberOfTasks = 3
-ontologyAssociationFile = datafiles/go/gene2go.mouse.txt
-ontologyDescriptionFile = datafiles/go/go2desc.txt
+ontologyAssociationFile = gene2go.mouse.txt
+ontologyDescriptionFile = go2desc.txt
 targetCategory = CASE
 featureSelectionMethod = differentiation
 numberOfSelectedFeatures = 50
 clusteringColors = traditional
 metataskShuffling = off
-snpSelectionShuffle = off
 }}}
 
 As one can see, most of the property names above are kind of self-explaining. Besides, they are already explained on the documentation of command-line options for all single commands integrating the pipeline. Perhaps of more interest for !CompletePipeline are four other parameters, two optional and the other two mandatory. A call to !CompletePipeline has the syntax:
