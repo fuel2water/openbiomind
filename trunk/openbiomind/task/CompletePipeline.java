@@ -37,6 +37,7 @@ class CompletePipeline{
              }
              catch (IOException e){
                    System.err.println("Error loading pipeline properties file.");
+                   System.exit(-1);
              }
              for (Object p:properties.keySet()){
                  optionalOptions.add("-"+((String)p));
@@ -55,7 +56,7 @@ class CompletePipeline{
              }
              if (!approved){
                 System.err.println("Usage: java task.CompletePipeline <-d dataset file> [-dt test dataset] <-o output file> [-p alternate properties file] [property options]");
-                System.exit(0);
+                System.exit(-1);
              }
              
              Properties properties=new Properties();
@@ -76,6 +77,7 @@ class CompletePipeline{
              }
              catch (IOException e){
                    System.err.println("Error loading pipeline properties file.");
+                   System.exit(-1);
              }
              properties.setProperty(PipelineParameters.INPUT_DATASET_PROPERTY,options.getOption(CompletePipeline.INPUT_DATASET_OPTION));
              if (options.containsOption(CompletePipeline.TEST_DATASET_OPTION)){

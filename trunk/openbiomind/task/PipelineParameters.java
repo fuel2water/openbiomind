@@ -444,8 +444,8 @@ class PipelineParameters{
                ViewClusters.main(this.makeViewClustersParameters(MUTIC_DATASET,MUTIC_OUTPUT,MUTIC_IMAGE,ViewClusters.MONO_COLORS));
                ClusteringTransformer.main(this.makeClusteringTransformParameters(this.enhancedDatasetPath,ClusteringTransformer.MOBRA,this.mobraDatasetPath));
                Clusterize.main(this.makeClusteringParameters(MOBRA_DATASET,this.modelClusteringMetric,MOBRA_OUTPUT));
-               ViewClusters.main(this.makeViewClustersParameters(MOBRA_DATASET,MOBRA_OUTPUT,MOBRA_IMAGE,ViewClusters.MONO_COLORS));
                GraphFeatures.makeGraph(this);
+               ViewClusters.main(this.makeViewClustersParameters(MOBRA_DATASET,MOBRA_OUTPUT,MOBRA_IMAGE,ViewClusters.MONO_COLORS));
         }
 
 }

@@ -213,7 +213,7 @@ public class RecursiveFeatureElim {
 			
 		} catch (IOException e) {
 			System.err.println("There was an error either writing to file/folder during the RFE trial(s).");
-			e.printStackTrace(); 
+            System.exit(-1);
 		}
 		
 	}

@@ -36,7 +36,7 @@ class ViewClusters{
              }
              if (!approved){
                 System.err.println("Usage: java task.ViewClusters <-d clustering dataset> <-r clustering result> <-o image file> ["+CLUSTERING_COLOR_OPTION+" traditional|mono]");
-                return;
+                System.exit(-1);
              }
 
              Properties properties=new Properties();
@@ -49,6 +49,7 @@ class ViewClusters{
              }
              catch (IOException e){
                    System.err.println("Error loading properties file.");
+                   System.exit(-1);
              }
              for (String option:options.getOptionalSet()){
                  if (!options.containsOption(option)){
@@ -69,6 +70,7 @@ class ViewClusters{
              }
              catch (IOException e){
                    System.err.println("Error while loading clustering dataset"+options.getOption(CLUSTERING_DATASET_OPTION));
+                   System.exit(-1);
              }
              
              OmniClustering clustering=null;
@@ -82,6 +84,7 @@ class ViewClusters{
              }
              catch (IOException e){
                    System.err.println("Error while loading ");
+                   System.exit(-1);
              }
              System.out.println("Processing image");
              
@@ -93,6 +96,7 @@ class ViewClusters{
              }
              catch (IOException e){
                    System.err.println("Error while saving clustering image"+options.getOption(OUTPUT_FILE_OPTION));
+                   System.exit(-1);
              }
       }
 }

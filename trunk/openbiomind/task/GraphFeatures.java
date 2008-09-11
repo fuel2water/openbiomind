@@ -213,6 +213,7 @@ class GraphFeatures{
              }
              catch (IOException e){
                    System.err.println("Error while loading feature utility file.");
+                   System.exit(-1);
              }
              System.out.println("Loading "+parameters.getMobraDatasetPath());
              try {
@@ -224,6 +225,7 @@ class GraphFeatures{
              }
              catch (IOException e){
                    System.err.println("Error while loading feature utility file.");
+                   System.exit(-1);
              }
              System.out.println("Loading "+parameters.getHorizontalDatasetPath());
              try {
@@ -235,6 +237,7 @@ class GraphFeatures{
              }
              catch (IOException e){
                    System.err.println("Error while loading feature utility file.");
+                   System.exit(-1);
              }
       }
       
@@ -350,6 +353,7 @@ class GraphFeatures{
              }
              catch (IOException e){
                    System.err.println("Error while dumping graph file of feature relations.");
+                   System.exit(-1);
              }
       }
       
@@ -372,7 +376,7 @@ class GraphFeatures{
                                    PipelineParameters.MAX_NODES_GRAPH_PROPERTY+" max nodes] [-"+
                                    PipelineParameters.MAX_COOC_EDGES_GRAPH_PROPERTY+" max co-occurence edges] [-"+
                                    PipelineParameters.MAX_COEX_EDGES_GRAPH_PROPERTY+" max co-expression edges]");
-                return;
+                System.exit(-1);
              }
 
              Properties properties=new Properties();
@@ -386,6 +390,7 @@ class GraphFeatures{
              }
              catch (IOException e){
                    System.err.println("Error loading properties file.");
+                   System.exit(-1);
              }
              for (String option:options.getOptionalSet()){
                  if (options.containsOption(option)){

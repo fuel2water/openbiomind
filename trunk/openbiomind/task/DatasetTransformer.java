@@ -78,6 +78,7 @@ class DatasetTransformer{
              }
              catch (IOException e){
                    System.err.println("Error while loading training dataset");
+                   System.exit(-1);
              }
              
              int numberOfFolds=0;
@@ -100,6 +101,7 @@ class DatasetTransformer{
                 }
                 catch (IOException e){
                       System.err.println("Error while loading test dataset");
+                      System.exit(-1);
                 }
 
                 ArrayList<Dataset> singleFold=new ArrayList<Dataset>();
@@ -139,7 +141,7 @@ class DatasetTransformer{
              else {
                   if (!tester.isDirectory()){
                      System.err.println("There is already a file called "+outdir);
-                     return;
+                     System.exit(-1);
                   }
              }
              
@@ -148,6 +150,7 @@ class DatasetTransformer{
              }
              catch (IOException e){
                    System.err.println("Unable to save transformed folds.");      
+                   System.exit(-1);
              }
       }
       
@@ -176,7 +179,7 @@ class DatasetTransformer{
                                    PipelineParameters.TEST_DATASET_PROPERTY+" test dataset] [-"+
                                    PipelineParameters.NUMBER_OF_SELECTED_FEATURES_PROPERTY+" nf] [-"+
                                    PipelineParameters.FEATURE_SELECTION_METHOD_PROPERTY+" differentiation|SAM]");
-                return;
+                System.exit(-1);
              }
 
              Properties properties=new Properties();
@@ -189,6 +192,7 @@ class DatasetTransformer{
              }
              catch (IOException e){
                    System.err.println("Error loading properties file.");
+                   System.exit(-1);
              }
              if (options.containsOption("-"+PipelineParameters.TEST_DATASET_PROPERTY)){
                 properties.setProperty(PipelineParameters.IS_FOLDED_PROPERTY,"false");

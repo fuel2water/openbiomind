@@ -54,7 +54,7 @@ class ClusteringTransformer{
              }
              if (!approved){
                 System.err.println("Usage: java task.ClusteringTransformer <-d dataset file> <-o output file> <-t transform> [-p metatask results dir]");
-                System.exit(0);
+                System.exit(-1);
              }
              
              String transformName=options.getOption(TRANSFORM_OPTION);
@@ -71,6 +71,7 @@ class ClusteringTransformer{
              }
              catch (IOException e){
                    System.err.println("Error while loading dataset "+fileName);
+                   System.exit(-1);
              }
                 
              if (transformName.equals(DATASET_HORIZONTAL)||transformName.equals(DATASET_VERTICAL)){
@@ -87,12 +88,14 @@ class ClusteringTransformer{
                 }
                 catch (IOException e){
                       System.err.println("Error loading metatask results at directory "+path);
+                      System.exit(-1);
                 }
                 
                 clusteringDataset=new ClusteringDataset(dataset,result.getTaskResults(),transformName.equals(MOBRA)?ClusteringDataset.ResultTransform.MOBRA:ClusteringDataset.ResultTransform.MUTIC);
              }
              if (clusteringDataset==null){
                 System.err.println("It seems that you are requesting an invalid transform. Valid transforms are "+DATASET_HORIZONTAL+","+DATASET_VERTICAL+","+MOBRA+" and "+MUTIC);
+                System.exit(-1);
                 return;
              }
              
@@ -107,6 +110,7 @@ class ClusteringTransformer{
              }
              catch (IOException e){
                    System.err.println("Error while writing clustering dataset "+clusterDatasetName);
+                   System.exit(-1);
              }
       }
 }

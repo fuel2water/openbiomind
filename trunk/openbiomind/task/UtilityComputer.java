@@ -211,6 +211,7 @@ public class UtilityComputer{
              }
              catch (IOException e){
                    System.err.println("Error while loading metatask result from "+resultDir);
+                   System.exit(-1);
              }
              
              UtilityComputer utilityComputer=new UtilityComputer(result,dataset);
@@ -220,6 +221,7 @@ public class UtilityComputer{
              }
              catch (IOException e){
                    System.err.println("Error while saving feature utilities at "+outputFile);
+                   System.exit(-1);
              }
       }
       
@@ -239,7 +241,7 @@ public class UtilityComputer{
              if (!approved){
                 System.err.println("Usage: java task.UtilityComputer <-r result dir> <-o output file> <-d base dataset> [-"+
                         PipelineParameters.TARGET_CATEGORY_PROPERTY+" target category]");
-		    	return;
+                System.exit(-1);
 		     }
 		     
              Properties properties=new Properties();
@@ -252,6 +254,7 @@ public class UtilityComputer{
              }
              catch (IOException e){
                    System.err.println("Error loading properties file.");
+                   System.exit(-1);
              }
              for (String option:options.getOptionalSet()){
                  if (options.containsOption(option)){
