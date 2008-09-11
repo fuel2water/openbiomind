@@ -225,6 +225,7 @@ public class MetaTask{
              }
              catch (IOException e){
                    System.err.println("Unable to load datasets from the data dir.");
+                   System.exit(-1);
              }
              String outputDir=parameters.getMetataskOutputPath();
              String gpType=parameters.getClassificationMethod();
@@ -236,7 +237,8 @@ public class MetaTask{
              }
              catch (IOException e){
                    System.err.println("Error while dumping results.");
-                   e.printStackTrace();
+                   //e.printStackTrace();
+                   System.exit(-1);
              }
       }
       
@@ -259,7 +261,7 @@ public class MetaTask{
                         PipelineParameters.TARGET_CATEGORY_PROPERTY+" case category] [-"+
                         PipelineParameters.CLASSIFICATION_METHOD_PROPERTY+" "+methodsToString()+"] [-"+
                         PipelineParameters.METATASK_SHUFFLING+" on|off]");
-                return;
+                System.exit(-1);
              }
 
              Properties properties=new Properties();
@@ -272,6 +274,7 @@ public class MetaTask{
              }
              catch (IOException e){
                    System.err.println("Error loading properties file.");
+                   System.exit(-1);
              }
              for (String option:options.getOptionalSet()){
                  if (options.containsOption(option)){

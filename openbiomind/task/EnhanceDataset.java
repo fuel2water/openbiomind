@@ -55,6 +55,7 @@ class EnhanceDataset{
              }
              catch (IOException e){
                    System.err.println("Error while loading Gene Ontology information");
+                   System.exit(-1);
              }
              
              Dataset original=null;
@@ -69,6 +70,7 @@ class EnhanceDataset{
              }
              catch (IOException e){
                    System.err.println("Error while loading original dataset.");
+                   System.exit(-1);
              }
              
              Dataset enhanced=ontologyStorer.makeEnhanced(original);
@@ -83,6 +85,8 @@ class EnhanceDataset{
              }
              catch (IOException e){
                    System.err.println("Error while writing enhanced dataset.");
+                   System.exit(-1);
+
              }
       }
       
@@ -101,7 +105,7 @@ class EnhanceDataset{
              }
              if (!approved){
                 System.err.println("Usage: java task.EnhanceDataset <"+INPUT_DATASET_OPTION+" original dataset> <"+OUTPUT_DATASET_OPTION+" enhanced dataset> [-"+PipelineParameters.ONTOLOGY_DESCRIPTION_FILE_PROPERTY+" ontology description file] [-"+PipelineParameters.ONTOLOGY_ASSOCIATION_FILE_PROPERTY+" ontology association file]");
-                System.exit(0);
+                System.exit(-1);
              }
              
              Properties properties=new Properties();
@@ -114,6 +118,7 @@ class EnhanceDataset{
              }
              catch (IOException e){
                    System.err.println("Error loading properties file.");
+                   System.exit(-1);
              }
              for (String option:options.getOptionalSet()){
                  if (options.containsOption(option)){

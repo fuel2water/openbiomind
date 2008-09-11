@@ -38,7 +38,7 @@ public class Clusterize{
              if (!approved){
                  System.err.println("Usage: java task.Clusterize <-d clustering dataset> <-o output file> [-"+
                                     PipelineParameters.DATASET_CLUSTERING_METRIC_PROPERTY+" "+SimilarityMetricFactory.COSINE_NAME+"|"+SimilarityMetricFactory.EUCLIDIAN_NAME+"|"+SimilarityMetricFactory.SNP_NAME+"]");
-                 System.exit(0);
+                 System.exit(-1);
              }
 
              Properties properties=new Properties();
@@ -51,6 +51,7 @@ public class Clusterize{
              }
              catch (IOException e){
                    System.err.println("Error loading properties file.");
+                   System.exit(-1);
              }
              for (String option:options.getOptionalSet()){
                  if (options.containsOption(option)){
@@ -70,7 +71,7 @@ public class Clusterize{
              }
              catch (Exception e){
                    System.err.println("Unable to load clustering data.");
-                   e.printStackTrace();
+                   System.exit(-1);
              }
               
              try {
@@ -82,6 +83,7 @@ public class Clusterize{
              }
              catch (IOException e){
                    System.err.println("Unable to save clustering results.");
+                   System.exit(-1);
              }
        }
 }
