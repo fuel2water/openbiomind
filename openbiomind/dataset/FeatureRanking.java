@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * Supplies ranks of features of a predefined length for given datasets.
- * @author Lœcio
+ * @author Lucio
  *
  */
 public abstract class FeatureRanking{
