@@ -3,7 +3,7 @@ package snps;
 import dataset.Entity;
 
 /**
- * Operates SNP samples as a faade to the parent SNP dataset.
+ * Operates SNP samples as a facade to the parent SNP dataset.
  * @author Lucio
  *
  */
