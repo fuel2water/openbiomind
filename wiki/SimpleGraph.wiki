@@ -14,3 +14,8 @@ SimpleGraph was built keeping in mind the production of a good-looking, clear gr
 
   # The graph should be connected, i.e., with at least one path between any two pairs of nodes.
   # Edges should be kept to a minimum, avoiding the formation of a "spaguetti" graph.
+
+SimpleGraph achieves criterion #2 as well as the requisite of simple parameters by showing just the n most co-occurring edges (as well as their corresponding nodes, of course) of the metatask result analyzed. 
+
+That is, the number of edges is parametrized in a near-hard way. It is not a _completely_ hard way only because there may be ties among the top n most occurring edges, and so n is in fact a lower bound.  
+ 
