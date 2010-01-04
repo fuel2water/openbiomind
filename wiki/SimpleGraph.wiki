@@ -24,3 +24,9 @@ Also, plotting only the most co-occuring edges almost always will produce a disc
 The solution used here was to use co-expression edges to perform such "glueing". For a given independent subgraph A, the most co-expressive edge between a node of A and another node from one of the other subgraphs is found, until all subgraphs are united in a single connected graph.
 
 = Usage =
+
+The syntax of the SimpleGraph command is given by
+
+{{{
+java task.SimpleGraph <-h horizontal dataset> <-m mobra dataset> <-u utility file> <-o output file>
+}}}
