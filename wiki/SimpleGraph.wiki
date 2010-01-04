@@ -10,4 +10,4 @@ SimpleGraph addresses those shortcomings by using only one parameter and leaving
 
 = Details =
 
-SimpleGraph was built keeping in mind the production of a good-looking, clear graph. Of course that first definition is rather vague and subjective, but it is possible to add 
+SimpleGraph was built keeping in mind the production of a good-looking, clear graph. Of course that first definition is rather vague and subjective, but the list below tries to break down in key points what defines a graph as good looking and clear:
