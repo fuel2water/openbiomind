@@ -1,0 +1,13 @@
+#Usage and "philosophy" of the SimpleGraph command
+
+= Introduction =
+
+The SimpleGraph command as added to the OpenBiomind toolkit as a simpler (and in some ways better) alternative to the original GraphFeatures command.
+
+Utilization of GraphFeatures over many different datasets showed some difficults in usability and a tendency for producing less-than-ideal results. GraphFeatures has a relatively large number of parameters, and usually many attempts tuning those parameters are necessary until a satisfactory result is achieved. Even though, the final result often may come short of being ideal, often forcing the user to opt between a graph fully connected but not very clear due to an excess of edges, or a graph will fewer edges but on the other hand broken in several subgraphs.
+
+SimpleGraph addresses those shortcomings by using only one parameter and leaving most of the work of producing a good-looking, clear and informative graph to internal heuristics and systematics. The philosophy and usage of the command are detailed below.
+
+= Details =
+
+SimpleGraph was built keeping in mind the production of a good-looking, clear graph. Of course that first definition is rather vague and subjective, but it is possible to add 
