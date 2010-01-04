@@ -17,5 +17,7 @@ SimpleGraph was built keeping in mind the production of a good-looking, clear gr
 
 SimpleGraph achieves criterion #2 as well as the requisite of simple parameters by showing just the n most co-occurring edges (as well as their corresponding nodes, of course) of the metatask result analyzed. 
 
-That is, the number of edges is parametrized in a near-hard way. It is not a _completely_ hard way only because there may be ties among the top n most occurring edges, and so n is in fact a lower bound.  
+That is, the number of edges is parametrized in a near-hard way. It is not a _completely_ hard way only because there may be ties among the top n most occurring edges, and so n is in fact a lower bound.
+
+Also, plotting only the most co-occuring edges almost always will produce a disconnected graph, violating criterion #1.
  
