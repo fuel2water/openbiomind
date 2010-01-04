@@ -17,9 +17,9 @@ SimpleGraph was built keeping in mind the production of a good-looking, clear gr
 
 SimpleGraph achieves criterion #2 as well as the requisite of simple parameters by showing just the n most co-occurring edges (as well as their corresponding nodes, of course) of the metatask result analyzed. 
 
-That is, the number of edges is parametrized in a near-hard way. It is not a _completely_ hard way only because there may be ties among the top n most occurring edges, and so n is in fact a lower bound.
+That is, the number of edges is parametrized in a near-hard way. It is not a _completely_ hard way only because there may be ties among the top n most occurring edges, and so n is in fact a lower bound. Also, the larger the n, the higher-than-n will tend to be the actual number of edges.
 
 Also, plotting only the most co-occuring edges almost always will produce a disconnected graph, violating criterion #1. Therefore, more edges are necessary for "glueing" the several independent subgraphs that usually appear under that initial approach.
 
-The solution used here was to use co-expression edges to perform such "glueing". For a given independent subgraph A, the most co-expressive edge between a node of A and another node from one of the other subgraphs is found, until all subgraphs for a single connected graph.
+The solution used here was to use co-expression edges to perform such "glueing". For a given independent subgraph A, the most co-expressive edge between a node of A and another node from one of the other subgraphs is found, until all subgraphs are united in a single connected graph.
  
