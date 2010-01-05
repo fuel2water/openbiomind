@@ -53,6 +53,6 @@ label = "{Drip |  Drosophila melanogaster drip (Drip), transcript variant B, mRN
 shape = "record"
 ];
 CG32393 -- Drip
-Tue Jan 05 18:03:04 lucio@sauron /work/omni/projetos/openbiomind080/openbiomind/bin 516 $ dot -Tpng graph12.dot > graph12.png
-Tue Jan 05 18:03:32 lucio@sauron /work/omni/projetos/openbiomind080/openbiomind/bin 517 $ 
+openbiomind/bin $ dot -Tpng graph12.dot > graph12.png
+openbiomind/bin $ 
 }}}
