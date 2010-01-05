@@ -34,3 +34,25 @@ java task.SimpleGraph <-h horizontal dataset> <-m mobra dataset> <-u utility fil
 As one may suspect, options -h, -m, -u and -o are identical to the same options used by GraphFeatures. On the other hand, the three graph-controlling options of GraphFeatures are "substituted" by just one, -minEdges, which sets the minimum number of edges of the graph as defined in the previous section.
 
 If the -mindEdges option is ommited, a default value of 10 edges at least is assumed. (The corresponding value can of course be editted in pipeline.properties file.)
+
+The usage example below produces a graph setting minEdges to 12:
+
+{{{
+openbiomind/bin $ java task.SimpleGraph -h ../../testdata/horizontal.tab -m ../../testdata/mobra.tab -u ../../testdata/u100.txt -o graph12.dot -minEdges 12
+Loading ../../testdata/u100.txt
+Loading ../../testdata/mobra.tab
+Loading ../../testdata/horizontal.tab
+openbiomind/bin $ head graph12.dot 
+graph G {
+"CG32393" [
+label = "{CG32393 |  Drosophila melanogaster dikar (dikar), transcript variant A, mRNA.  | {0.46692607% | 4 | 622 | 476}}",
+shape = "record"
+];
+"Drip" [
+label = "{Drip |  Drosophila melanogaster drip (Drip), transcript variant B, mRNA.  | {0.6225681% | 2 | 52 | 78}}",
+shape = "record"
+];
+CG32393 -- Drip
+Tue Jan 05 18:03:04 lucio@sauron /work/omni/projetos/openbiomind080/openbiomind/bin 516 $ dot -Tpng graph12.dot > graph12.png
+Tue Jan 05 18:03:32 lucio@sauron /work/omni/projetos/openbiomind080/openbiomind/bin 517 $ 
+}}}
