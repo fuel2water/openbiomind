@@ -31,4 +31,4 @@ The syntax of the SimpleGraph command is given by
 java task.SimpleGraph <-h horizontal dataset> <-m mobra dataset> <-u utility file> <-o output file> [-minEdges minimum number of edges]
 }}}
 
-As one may suspect, options -h, -m, -u and -o are identical to the same options used by GraphFeatures. 
+As one may suspect, options -h, -m, -u and -o are identical to the same options used by GraphFeatures. On the other hand, the three graph-controlling options of GraphFeatures are "substituted" by just one, -minEdges, which sets the minimum number of edges of the graph as defined in the previous section.
