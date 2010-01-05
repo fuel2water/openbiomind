@@ -28,5 +28,5 @@ The solution used here was to use co-expression edges to perform such "glueing".
 The syntax of the SimpleGraph command is given by
 
 {{{
-java task.SimpleGraph <-h horizontal dataset> <-m mobra dataset> <-u utility file> <-o output file>
+java task.SimpleGraph <-h horizontal dataset> <-m mobra dataset> <-u utility file> <-o output file> [-minEdges minimum number of edges]
 }}}
