@@ -1,6 +1,6 @@
 #Usage and "philosophy" of the SimpleGraph command
 
-= Introduction =
+= Overview =
 
 The SimpleGraph command as added to the OpenBiomind toolkit as a simpler (and in some ways better) alternative to the original GraphFeatures command.
 
@@ -30,3 +30,5 @@ The syntax of the SimpleGraph command is given by
 {{{
 java task.SimpleGraph <-h horizontal dataset> <-m mobra dataset> <-u utility file> <-o output file> [-minEdges minimum number of edges]
 }}}
+
+As one may suspect, options -h, -m, -u and -o are identical to the same options used by GraphFeatures. 
