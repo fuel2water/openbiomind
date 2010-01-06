@@ -38,23 +38,25 @@ If the -mindEdges option is ommited, a default value of 10 edges at least is ass
 The usage example below produces a graph setting minEdges to 12:
 
 {{{
-openbiomind/bin $ java task.SimpleGraph -h ../../testdata/horizontal.tab -m ../../testdata/mobra.tab -u ../../testdata/u100.txt -o graph12.dot -minEdges 12
-Loading ../../testdata/u100.txt
-Loading ../../testdata/mobra.tab
-Loading ../../testdata/horizontal.tab
-openbiomind/bin $ head graph12.dot 
+openbiomind/bin $ java task.SimpleGraph -h horizontal.tab  -m mobra.tab  -u utable.txt -o graphcal.dot -minEdges 16
+Loading utable.txt
+Loading mobra.tab
+Loading horizontal.tab
+openbiomind/bin $ head graphcal.dot
 graph G {
-"CG32393" [
-label = "{CG32393 |  Drosophila melanogaster dikar (dikar), transcript variant A, mRNA.  | {0.46692607% | 4 | 622 | 476}}",
+"2410015N17Rik" [
+label = "{2410015N17Rik | RIKEN cDNA 2410015N17 gene | {2.4324324% | 9 | 83 | 56}}",
 shape = "record"
 ];
-"Drip" [
-label = "{Drip |  Drosophila melanogaster drip (Drip), transcript variant B, mRNA.  | {0.6225681% | 2 | 52 | 78}}",
+"Fubp1" [
+label = "{Fubp1 | far upstream element (FUSE) binding protein 1 | {1.6216216% | 12 | 92 | 79}}",
 shape = "record"
 ];
-CG32393 -- Drip
-openbiomind/bin $ dot -Tpng graph12.dot > graph12.png
+"2410015N17Rik" -- "Fubp1"
+openbiomind/bin $ dot -Tpng graphcal.dot > graphcal.png
 openbiomind/bin $ 
 }}}
 
 As we can see above, SimpleGraph is used to generate a .dot file specifying a graph in GraphViz syntax. Then, a PNG image (shown below) is generated from such description.
+
+http://img503.imageshack.us/img503/7564/graphcal.png
