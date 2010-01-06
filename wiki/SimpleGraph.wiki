@@ -56,3 +56,5 @@ CG32393 -- Drip
 openbiomind/bin $ dot -Tpng graph12.dot > graph12.png
 openbiomind/bin $ 
 }}}
+
+As we can see above, SimpleGraph is used to generate a .dot file specifying a graph in GraphViz syntax. Then, a PNG image (shown below) is generated from such description.
