@@ -57,6 +57,6 @@ openbiomind/bin $ dot -Tpng graphcal.dot > graphcal.png
 openbiomind/bin $ 
 }}}
 
-As we can see above, SimpleGraph is used to generate a .dot file specifying a graph in GraphViz syntax. Then, a PNG image (shown below) is generated from such description.
+As we can see above, SimpleGraph is used to generate a file specifying a graph in DOT language. Then, a PNG image (shown below) is generated from such description, using the dot command from the Graphviz package.
 
 <img src=http://img503.imageshack.us/img503/7564/graphcal.png width=1200>
