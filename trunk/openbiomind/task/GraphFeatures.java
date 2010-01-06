@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 import clustering.*;
+import util.*;
 
 /**
  * Draws a graph (in Dot Language) of the most important features of a metatask, showing co-occurrence and co-expression
@@ -28,37 +29,6 @@ class GraphFeatures{
              optionalOptions.add("-"+PipelineParameters.MAX_NODES_GRAPH_PROPERTY);
              optionalOptions.add("-"+PipelineParameters.MAX_COOC_EDGES_GRAPH_PROPERTY);
              optionalOptions.add("-"+PipelineParameters.MAX_COEX_EDGES_GRAPH_PROPERTY);      
-      }
-      
-      /**
-       * Container class for feature data.
-       * @author emac
-       *
-       */
-      class FeatureInfo{
-          
-            String featureName,featureDescription;
-            float featureUtility;
-            int uRank,diffRank,samRank;
-            
-            public FeatureInfo(String line){
-                   //System.out.println(line);
-                
-                   String[] cols=line.split("\t");
-                   
-                   featureName=cols[0];
-                   if (cols.length>=6){
-                      featureDescription=cols[5];
-                   }
-                   else {
-                        featureDescription="";
-                   }
-                   featureUtility=Float.valueOf(cols[1]);
-                   uRank=Integer.valueOf(cols[2]);
-                   diffRank=Integer.valueOf(cols[3]);
-                   samRank=Integer.valueOf(cols[4]);
-            }
-        
       }
       
       class FeatureCooc{
@@ -90,34 +60,6 @@ class GraphFeatures{
             }
       }
       
-      /**
-       * Internal class for loading and manipulating utility-related values.
-       * @author Lucio.
-       *
-       */
-      class UtilityTable{
-          
-            List<FeatureInfo> features=new ArrayList<FeatureInfo>();
-            Map<String,FeatureInfo> f2r=new HashMap<String,FeatureInfo>();
-          
-            public UtilityTable(Reader reader) throws IOException{
-                
-                   BufferedReader buffer=new BufferedReader(reader);
-                   
-                   for (String line=buffer.readLine();line!=null;line=buffer.readLine()){
-                       if (line.trim().equals("")){
-                          continue;
-                       }
-                       
-                       FeatureInfo record=new FeatureInfo(line);
-                       
-                       features.add(record);
-                       f2r.put(record.featureName,record);
-                   }
-            }
-            
-      }
-
       class CoocMap{
           
             Map<String,FeatureCoocRank> mastermap=new HashMap<String,FeatureCoocRank>(); 

@@ -26,6 +26,7 @@ class SimpleGraph{
              mandatoryOptions.add(MOBRA_DATASET_OPTION);
              mandatoryOptions.add(UTILITY_FILE_OPTION);
              mandatoryOptions.add(OUTPUT_FILE_OPTION);
+             optionalOptions.add("-"+PipelineParameters.MIN_EDGES_GRAPH_PROPERTY);
       }
 
       class Edge{
@@ -111,8 +112,8 @@ class SimpleGraph{
                     described.add(edge.f2);
                  }
                  if (edge.isCooc)
-                    writer.write(edge.f1+" -- "+edge.f2+"\n");
-                 else writer.write(edge.f1+" -- "+edge.f2+" [style=dashed]\n");
+                    writer.write("\""+edge.f1+"\" -- \""+edge.f2+"\"\n");
+                 else writer.write("\""+edge.f1+"\" -- \""+edge.f2+"\" [style=dashed]\n");
              }
              writer.write("}\n");
       }
@@ -157,8 +158,8 @@ class SimpleGraph{
 		          }
 		      }
               }
-              for (String e:group)
-                  System.out.println(e);
+              //for (String e:group)
+              //    System.out.println(e);
 
               Set<String> rest=new HashSet<String>();
 
@@ -208,7 +209,7 @@ class SimpleGraph{
                  
                  FileReader reader=new FileReader(parameters.getMobraDatasetPath());
                  
-                 topEdges=crunchMOBRAData(reader,10);
+                 topEdges=crunchMOBRAData(reader,parameters.getMinimumNumberOfEdges());
                  reader.close();
              }
              catch (IOException e){
@@ -265,7 +266,7 @@ class SimpleGraph{
                 approved=false;
              }
              if (!approved){
-                System.err.println("Usage: java task.SimpleGraph <-h horizontal dataset> <-m mobra dataset> <-u utility file> <-o output file>");
+                System.err.println("Usage: java task.SimpleGraph <-h horizontal dataset> <-m mobra dataset> <-u utility file> <-o output file> [-"+PipelineParameters.MIN_EDGES_GRAPH_PROPERTY+" minimum number of edges]");
                 System.exit(-1);
              }
 
@@ -293,7 +294,8 @@ class SimpleGraph{
              parameters.setMobraDatasetPath(options.getOption(MOBRA_DATASET_OPTION));
              parameters.setUtilityFile(options.getOption(UTILITY_FILE_OPTION));
              parameters.setGraphFilePath(options.getOption(OUTPUT_FILE_OPTION));
-             
+             parameters.setMininumNumberOfEdges(Integer.valueOf(properties.getProperty(PipelineParameters.MIN_EDGES_GRAPH_PROPERTY)));
+
              makeGraph(parameters);
       }
 }

@@ -27,6 +27,7 @@ class PipelineParameters{
         public static final String MAX_NODES_GRAPH_PROPERTY="topNUseful";
         public static final String MAX_COOC_EDGES_GRAPH_PROPERTY="topNCooc";
         public static final String MAX_COEX_EDGES_GRAPH_PROPERTY="topNCoex";      
+        public static final String MIN_EDGES_GRAPH_PROPERTY="minEdges";      
         public static final String CLUSTERING_COLOR_PROPERTY="clusteringColors"; 
         public static final String METATASK_SHUFFLING="metataskShuffling";
         public static final String SNP_SELECTION_SHUFFLE="snpSelectionShuffle";
@@ -82,8 +83,9 @@ class PipelineParameters{
         private String snpUtilityDir;
         private boolean shuffleMetatask;
         private boolean snpSelectionShuffle;
-		private Float RFEEliminationRate;
-        
+	private Float RFEEliminationRate;
+	private int minimumNumberOfEdges;
+
         private static void testDir(String path){
             
                 File tester=new File(path);
@@ -174,6 +176,14 @@ class PipelineParameters{
                this.graphFilePath=this.outputPath+"/"+PipelineParameters.GRAPH_FILE;
                this.shuffleMetatask=properties.getProperty(METATASK_SHUFFLING).equals("on");
                this.snpSelectionShuffle=properties.getProperty(SNP_SELECTION_SHUFFLE).equals("on");
+        }
+
+        public int getMinimumNumberOfEdges(){
+               return minimumNumberOfEdges;
+        }
+
+        public void setMininumNumberOfEdges(int minimumNumberOfEdges){
+               this.minimumNumberOfEdges=minimumNumberOfEdges;
         }
 
         public boolean getSNPSelectionShuffle(){

@@ -10,8 +10,8 @@ import java.util.*;
  */
 public class UtilityTable{
     
-      private List<FeatureInfo> features=new ArrayList<FeatureInfo>();
-      private Map<String,FeatureInfo> f2r=new HashMap<String,FeatureInfo>();
+      public List<FeatureInfo> features=new ArrayList<FeatureInfo>();
+      public Map<String,FeatureInfo> f2r=new HashMap<String,FeatureInfo>();
     
       public FeatureInfo getFeature(String feature){
              if (!f2r.containsKey(feature))
