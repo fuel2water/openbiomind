@@ -59,4 +59,4 @@ openbiomind/bin $
 
 As we can see above, SimpleGraph is used to generate a .dot file specifying a graph in GraphViz syntax. Then, a PNG image (shown below) is generated from such description.
 
-<img src=http://img503.imageshack.us/img503/7564/graphcal.png width=640>
+<img src=http://img503.imageshack.us/img503/7564/graphcal.png width=800>
