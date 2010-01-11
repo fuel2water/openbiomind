@@ -39,7 +39,7 @@ All the names used above are standardized - that is, !CompletePipeline will *alw
 
    * _enhanced_dataset.txt_: dataset augmented with ontology-related features. (GO and PIR, by default.)
    * _featureUtility.txt_: list of useful features computed from metatask results.
-   * _graph.dot_ : a Dot file, viewable using Graphviz, describing a graph of co-expression and co-occurrences between the top useful features.
+   * _graph.dot_ : a Dot file, viewable using Graphviz, describing a graph of co-expression and co-occurrences between the top useful features. (From version 0.80 on, this graph is internally generated using the SimpleGraph command, while in older versions GraphFeatures was used.)
    * _horizontal_dataset.txt_: horizontal gene expression dataset made from original categorial dataset presented as input. (If instead a train-test pair was supplied was input, only the train dataset is used.)
    * _horizontal_output.txt_: output of horizontal gene expression clustering.
    * _metatask_: directory containing metatask outputs.
