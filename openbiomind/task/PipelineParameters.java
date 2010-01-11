@@ -163,6 +163,7 @@ class PipelineParameters{
                modelClusteringMetric=properties.getProperty(DATASET_CLUSTERING_METRIC_PROPERTY);
                numberOfTasks=Integer.valueOf(properties.getProperty(NUMBER_OF_TASKS_PROPERTY));
                outputPath=properties.getProperty(OUTPUT_PATH_PROPERTY);
+               this.minimumNumberOfEdges=Integer.valueOf(properties.getProperty(PipelineParameters.MIN_EDGES_GRAPH_PROPERTY));
                this.topNCoex=Integer.valueOf(properties.getProperty(PipelineParameters.MAX_COEX_EDGES_GRAPH_PROPERTY));
                this.topNUseful=Integer.valueOf(properties.getProperty(PipelineParameters.MAX_NODES_GRAPH_PROPERTY));
                this.topNCooc=Integer.valueOf(properties.getProperty(PipelineParameters.MAX_COOC_EDGES_GRAPH_PROPERTY));
@@ -454,7 +455,7 @@ class PipelineParameters{
                ViewClusters.main(this.makeViewClustersParameters(MUTIC_DATASET,MUTIC_OUTPUT,MUTIC_IMAGE,ViewClusters.MONO_COLORS));
                ClusteringTransformer.main(this.makeClusteringTransformParameters(this.enhancedDatasetPath,ClusteringTransformer.MOBRA,this.mobraDatasetPath));
                Clusterize.main(this.makeClusteringParameters(MOBRA_DATASET,this.modelClusteringMetric,MOBRA_OUTPUT));
-               GraphFeatures.makeGraph(this);
+               SimpleGraph.makeGraph(this);
                ViewClusters.main(this.makeViewClustersParameters(MOBRA_DATASET,MOBRA_OUTPUT,MOBRA_IMAGE,ViewClusters.MONO_COLORS));
         }
 

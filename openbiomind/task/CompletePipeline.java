@@ -55,7 +55,7 @@ class CompletePipeline{
                 approved=false;
              }
              if (!approved){
-                System.err.println("Usage: java task.CompletePipeline <-d dataset file> [-dt test dataset] <-o output file> [-p alternate properties file] [property options]");
+                System.err.println("Usage: java task.CompletePipeline <-d dataset file> [-dt test dataset] <-o output directory> [-p alternate properties file] [property options]");
                 System.exit(-1);
              }
              
