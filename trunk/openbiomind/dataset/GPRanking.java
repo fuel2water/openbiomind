@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Random; 
 import java.util.Set;
 
-import sun.net.dns.ResolverConfiguration.Options;
+//import sun.net.dns.ResolverConfiguration.Options;
 import task.MetaTask; 
 import task.MetaTaskResult;
 import task.UtilityComputer;

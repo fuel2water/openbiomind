@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<project name="OpenBiomind" default="compile">
+    <target name="clean" description="remove intermediate files">
+        <delete dir="classes"/>
+    </target>
+    <target name="clobber" depends="clean" description="remove all artifact files">
+        <delete file="openbiomind.jar"/>
+    </target>
+    <target name="compile" description="compile the Java source code to class files">
+        <mkdir dir="classes"/>
+        <javac srcdir="openbiomind" destdir="classes"/>
+    </target>
+    <target name="jar" depends="compile" description="create a Jar file for the application">
+        <jar destfile="openbiomind.jar">
+            <fileset dir="classes" includes="**/*.class"/>
+        </jar>
+    </target>
+
+  <target name="test">
+    <mkdir dir="tstbin"/>
+    <javac srcdir="tstsrc" destdir="tstbin">
+      <classpath>
+         <pathelement path="/usr/share/java/ant-junit.jar"/>
+         <pathelement path="classes"/>
+         <pathelement path="tstsrc"/>
+      </classpath>
+    </javac>
+    <junit>
+      <classpath>
+         <pathelement path="/usr/share/java/ant-junit.jar"/>
+         <pathelement path="classes"/>
+         <pathelement path="tstbin"/>
+      </classpath>
+      <formatter type="brief" usefile="false" />
+      <batchtest>
+        <fileset dir="tstbin" includes="**/*Test.class" />
+      </batchtest>
+    </junit>
+  </target>
+
+</project>
+
