@@ -30,6 +30,7 @@
          <pathelement path="/usr/share/java/ant-junit.jar"/>
          <pathelement path="classes"/>
          <pathelement path="tstbin"/>
+         <pathelement path="tstfiles"/>
       </classpath>
       <formatter type="brief" usefile="false" />
       <batchtest>

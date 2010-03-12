@@ -12,6 +12,10 @@ public class LineTagger{
 	
 	   private List<String> lines=new ArrayList<String>();
 
+           public List<String> getLines(){
+                  return lines;
+           }
+
 	   /**
 	    * Stores all lines supplied by a given text file.
 	    * @param fileName

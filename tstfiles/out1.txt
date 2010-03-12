@@ -1,0 +1,56 @@
+Fold #0:
+Ensemble:
+Model #0:
+inputThreshold Rps8 5120.2
+Model #1:
+inputThreshold Echs1 3391.7
+Train Matrix: 
+9	0
+4	9
+Accuracy: 0.8181818
+Test Matrix: 
+6	1
+3	1
+Accuracy: 0.6363636
+Fold #1:
+Ensemble:
+Model #0:
+inputThreshold Ard1 142.4
+Train Matrix: 
+10	2
+2	8
+Accuracy: 0.8181818
+Test Matrix: 
+1	3
+3	4
+Accuracy: 0.45454547
+Fold #2:
+Ensemble:
+Model #0:
+or
+ or
+  and
+   inputThreshold Tbp 135.8
+   and
+    inputThreshold Plxna3 280.23004
+    and
+     inputThreshold Xlr3a 84.13509
+     inputThreshold Rab3ip 271.95
+  inputThreshold P4ha2 318.95
+ inputThreshold Mef2d 1294.4595
+Train Matrix: 
+7	4
+0	11
+Accuracy: 0.8181818
+Test Matrix: 
+2	3
+1	5
+Accuracy: 0.6363636
+Global Train: 
+26	6
+6	28
+Accuracy: 0.8181818
+Global Test: 
+9	7
+7	10
+Accuracy: 0.57575756
