@@ -13,7 +13,7 @@ import dataset.Dataset;
  * @author Lucio
  *
  */
-class ClusteringTransformer{
+public class ClusteringTransformer{
     
       private static final Set<String> mandatoryOptions=new HashSet<String>();
       private static final Set<String> optionalOptions=new HashSet<String>();
@@ -36,14 +36,17 @@ class ClusteringTransformer{
     
       public static void main(String[] args){
           
+             //System.out.println("1");
              OptionManager options=new OptionManager(mandatoryOptions,optionalOptions,args);
              boolean approved=true;
              String errors=options.makeErrorMessages();
              
+             //System.out.println("2");
              if (!errors.equals("")){
                 System.err.println(errors);
                 approved=false;
              }
+             //System.out.println("3");
              if (approved){
                 if (!options.containsOption(METATASK_RESULTS_PATH_OPTION)){
                    if (options.getOption(TRANSFORM_OPTION).equals(MOBRA)||options.getOption(TRANSFORM_OPTION).equals(MUTIC)){
@@ -52,16 +55,19 @@ class ClusteringTransformer{
                    }
                 }
              }
+             //System.out.println("4");
              if (!approved){
                 System.err.println("Usage: java task.ClusteringTransformer <-d dataset file> <-o output file> <-t transform> [-p metatask results dir]");
                 System.exit(-1);
              }
+             //System.out.println("5");
              
              String transformName=options.getOption(TRANSFORM_OPTION);
              ClusteringDataset clusteringDataset=null; 
              Dataset dataset=null;
              String fileName=options.getOption(INPUT_DATASET_OPTION);
-            
+
+             //System.out.println("6");            
              try {
                 
                  FileReader reader=new FileReader(fileName);
@@ -73,11 +79,13 @@ class ClusteringTransformer{
                    System.err.println("Error while loading dataset "+fileName);
                    System.exit(-1);
              }
+             //System.out.println("7");
                 
              if (transformName.equals(DATASET_HORIZONTAL)||transformName.equals(DATASET_VERTICAL)){
                  
                 clusteringDataset=new ClusteringDataset(dataset,transformName.equals(DATASET_HORIZONTAL)); 
              }
+             //System.out.println("8");
              if (transformName.equals(MOBRA)||transformName.equals(MUTIC)){
                  
                 MetaTaskResult result=null;
@@ -93,11 +101,13 @@ class ClusteringTransformer{
                 
                 clusteringDataset=new ClusteringDataset(dataset,result.getTaskResults(),transformName.equals(MOBRA)?ClusteringDataset.ResultTransform.MOBRA:ClusteringDataset.ResultTransform.MUTIC);
              }
+             //System.out.println("9");
              if (clusteringDataset==null){
                 System.err.println("It seems that you are requesting an invalid transform. Valid transforms are "+DATASET_HORIZONTAL+","+DATASET_VERTICAL+","+MOBRA+" and "+MUTIC);
                 System.exit(-1);
                 return;
              }
+             //System.out.println("10");
              
              String clusterDatasetName=options.getOption(OUTPUT_DATASET_OPTION);
              
@@ -112,5 +122,6 @@ class ClusteringTransformer{
                    System.err.println("Error while writing clustering dataset "+clusterDatasetName);
                    System.exit(-1);
              }
+             //System.out.println("11");
       }
 }

@@ -191,7 +191,7 @@ class PipelineParameters{
                return this.snpSelectionShuffle;
         }
         
-        private String[] makeClusteringTransformParameters(String dirFile,String transform,String outfile){
+        public  String[] makeClusteringTransformParameters(String dirFile,String transform,String outfile){
                 if (transform.equals(ClusteringTransformer.MOBRA)||transform.equals(ClusteringTransformer.MUTIC)){
                     String[] output=new String[8];
                    
